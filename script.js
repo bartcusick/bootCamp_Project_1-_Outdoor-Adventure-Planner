@@ -14,7 +14,7 @@ $( document ).ready(function() {
 			}
 			
 			$.ajax(settings).done(function (response) {
-				console.log(response);
+				console.log("trail API: ", response);
 			});
 	
 	// Weather Variables
@@ -34,7 +34,7 @@ $( document ).ready(function() {
       console.log('queryURL:', queryURL)
       $('.city').html('<h1>'+ response.name + ' Weather Details</h1>')
       // Create CODE HERE to log the resulting object
-      console.log('response:', response)
+      console.log('weather response:', response)
       // Create CODE HERE to calculate the temperature (converted from Kelvin)
     //   $('.temp').html('<h1>'+ 'wind speed:' + response.wind.speed)
     //   // Create CODE HERE to transfer content to HTML
