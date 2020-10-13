@@ -8,9 +8,8 @@
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
-
-
 
 
   <section class="hero is-primary">
@@ -33,7 +32,27 @@
        
       </div>
     </div>
+    <div class = "geolocationDiv"></div> 
+        <p>Click button to display location using Latitude and Longitude</p> 
+        <button class = "button" onclick="getlocation()">Click me!</button> 
+        <p id="latAndLong"></p> 
 
+        <script> 
+        var lat = "";
+        var long ="";
+        var latAndLongEl = document.getElementById("latAndLong"); 
+        function getlocation(){ 
+                navigator.geolocation.getCurrentPosition(showLoc); 
+        } 
+        function showLoc(pos){ 
+                latAndLongEl.innerHTML = "Latitude: " + pos.coords.latitude +  
+                "<br>Longitude: " + pos.coords.longitude;
+                var lat = pos.coords.latitude;
+                console.log('lat:', lat)
+                var long = pos.coords.longitude;
+                console.log('long:', long)
+            } 
+        </script> 
     
 
   </section>
@@ -106,5 +125,5 @@ This will be the div for the trail info!!!                <a href="#">#css</a> <
             </div>
             
   </body>
+  <script src="script.js"></script>
 </html>
-
