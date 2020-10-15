@@ -16,15 +16,11 @@
     <div class="hero-body">
       <div class="container">
         <div class="columns">
-          <div class="column is-12"
+          <div class="column is-12">
         <h1 class="title">
-          
             <img class="hikingBird" src="https://i.imgur.com/ZEq3MUi.png">
-          </figure>
-
-          <div class="column is-12"
-
-          Outdoor Adventure Planner
+          <div class="column is-12">
+        Outdoor Adventure Planner
         </h1>
         <h2 class="subtitle">
           What type of adventures can the <strong>A-TEAM</strong> bring you on?!!
@@ -34,25 +30,8 @@
     </div>
     <div class = "geolocationDiv"></div> 
         <p>Click button to display location using Latitude and Longitude</p> 
-        <button class = "button" onclick="getlocation()">Click me!</button> 
+        <button class = "button" onclick="getPosition()">Click me!</button> 
         <p id="latAndLong"></p> 
-
-        <script> 
-        var lat = "";
-        var long ="";
-        var latAndLongEl = document.getElementById("latAndLong"); 
-        function getlocation(){ 
-                navigator.geolocation.getCurrentPosition(showLoc); 
-        } 
-        function showLoc(pos){ 
-                latAndLongEl.innerHTML = "Latitude: " + pos.coords.latitude +  
-                "<br>Longitude: " + pos.coords.longitude;
-                var lat = pos.coords.latitude;
-                console.log('lat:', lat)
-                var long = pos.coords.longitude;
-                console.log('long:', long)
-            } 
-        </script> 
     
 
   </section>
@@ -77,8 +56,8 @@
               </div>
     
               <div class="content">
-This will be the div for the trail info!!!                <a href="#">#css</a> <a href="#">#responsive</a>
-                <br>
+                <p>This will be the div for the trail info!!!</p>
+              
                 <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
               </div>
             </div>
