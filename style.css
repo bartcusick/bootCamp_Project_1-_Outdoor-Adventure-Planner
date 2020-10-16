@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .body {background-color:  #00d1b2;}
 .hikingBird {
     width: 200px;
@@ -66,4 +67,18 @@
         
     
       }
+=======
+.body {
+  background-color: #00d1b2;
+}
+
+.hikingBird {
+  width: 200px;
+  height: 200px;
+
+  height: auto;
+  max-width: 50%;
+  max-height: 440px;
+}
+>>>>>>> 33c4b089fb26ca114461432d06c947acacccf7c9
 

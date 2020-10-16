@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,24 +8,19 @@
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
-
-
 
 
   <section class="hero is-primary">
     <div class="hero-body">
       <div class="container">
         <div class="columns">
-          <div class="column is-12"
+          <div class="column is-12">
         <h1 class="title">
-          
             <img class="hikingBird" src="https://i.imgur.com/ZEq3MUi.png">
-          </figure>
-
-          <div class="column is-12"
-
-          Outdoor Adventure Planner
+          <div class="column is-12">
+        Outdoor Adventure Planner
         </h1>
         <h2 class="subtitle">
           What type of adventures can the <strong>A-TEAM</strong> bring you on?!!
@@ -34,7 +28,10 @@
        
       </div>
     </div>
-
+    <div class = "geolocationDiv"></div> 
+        <p>Click button to display location using Latitude and Longitude</p> 
+        <button class = "button" onclick="getPosition()">Click me!</button> 
+        <p id="latAndLong"></p> 
     
 
   </section>
@@ -59,8 +56,8 @@
               </div>
     
               <div class="content">
-This will be the div for the trail info!!!                <a href="#">#css</a> <a href="#">#responsive</a>
-                <br>
+                <p>This will be the div for the trail info!!!</p>
+              
                 <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
               </div>
             </div>
@@ -107,74 +104,5 @@ This will be the div for the trail info!!!                <a href="#">#css</a> <
             </div>
             
   </body>
+  <script src="script.js"></script>
 </html>
-
-=======
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Outdoor Adventure Planner</title>
-  <script src="https://kit.fontawesome.com/62686c0c57.js" crossorigin="anonymous"></script>
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-  <link rel="stylesheet" href="style.css">
-
-</head>
-
-
-<section class="hero is-primary">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-12">
-          <h1 class="title">
-            <img class="hikingBird" src="https://i.imgur.com/ZEq3MUi.png">
-            <div class="column is-12">
-              Outdoor Adventure Planner
-          </h1>
-          <h2 class="subtitle">
-            What type of adventures can the <strong>A-TEAM</strong> bring you on?!!
-          </h2>
-
-        </div>
-      </div>
-      <div class="geolocationDiv"></div>
-      <p>Click button to display location using Latitude and Longitude</p>
-      <button class="button" onclick="getPosition()">Click me!</button>
-      <p id="latAndLong"></p>
-
-
-</section>
-
-
-
-<body>
-  <nav class="navbar navbar-dark bg-dark">
-    <span class="navbar-text">
-      <h1 class="text-center">Weather Dashboard</h1>
-    </span>
-  </nav>
-
-  <!-- WEATHER TESTING -->
-
-    <!-- right side column -->
-    <div class="col-sm-5">
-      <div class="row p-8 my-3 border">
-        <ul id="weatherInfo">
-          <li id="weather"></li>
-          <li id="uvi"></li>
-          <li id="temp"></li>
-          <li id="humidity"></li>
-        </ul>
-      </div>
-      <div id="fiveDayForecast" class="row p-8 my-3 border">
-        <br>
-      </div>
-
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-      <script src="script.js"></script>
-</body>
-
-</html>
->>>>>>> 33c4b089fb26ca114461432d06c947acacccf7c9
