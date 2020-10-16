@@ -70,10 +70,11 @@ function getWeather(lat, lon) {
     //Log the queryURL
     console.log("queryURL:", queryURL);
     
-    // var weatherInfo = $("#weatherInfo");
-    // weatherInfo.append(weather);
-    // var uvi = $("<li>").text(response.current.uvi);
-    // weatherInfo.append(uvi);
+    var weatherInfo = $("#weatherInfo");
+    weatherInfo.append(weather);
+    var uvi = $("<li>").text(response.current.uvi);
+    weatherInfo.append(uvi);
+
         $("#weather").text("today's weather: " + response.current.weather[0].main);
       $("#uvi").html("Today's UVI:" + response.current.uvi);
       $("#temp").text("today's temperature in kelvin: " + response.current.temp);
