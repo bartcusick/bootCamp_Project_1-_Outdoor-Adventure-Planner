@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Outdoor Adventure Planner</title>
+    <script src="https://kit.fontawesome.com/62686c0c57.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="geolocationDiv">
+        <p>Click me to use your location to get local bike trails</p>
+        <button class="button" onclick="getTrails()">Click me!</button>
+        <p id="latAndLong"></p>
+    </div>
+
+
+    <div class="container">
+
+        <div class="trails-list"> </div>
+        <div class="trails-info">
+            
+        </div>
+
+
+    </div>
+
+</body>
+
+<script src="script.js"></script>
+
+</html>
