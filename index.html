@@ -30,7 +30,7 @@
                   <h1 class="logoText">Outdoor Adventure Planner <span>&trade;<span></h1>
                   <h2 class="logoTagLine">What type of adventures can the <strong>A-TEAM</strong> bring you on?</h2>
                   <div class="geolocationDiv"></div>
-                  <button class="button button1" onclick="getTrails()">-> Click to display locations <- </button>
+                  <button class="button button1" onclick="getTrails()">-> Find Trails in Your Area <- </button>
                       <p id="latAndLong"></p>
 
                 </div>
@@ -38,9 +38,43 @@
     </section>
   </div>
   
-  <div class="container">
+  
+  <div class="container" id="trailsPage">
+
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+      
+      <div class="navbar-brand">
+        <a .logoImageNavBar href="">
+          <img src="assets/navBar_Logo.svg" width="500" height="64">
+        </a>
+      </div>
+      <div id="navbarBasicExample" class="navbar-menu is-hoverable">
+        <div class="navbar-start">
+          <a class="navbar-item">
+            Home
+          </a>
+          <div class="navbar-menu is-hoverable">
+              <div class="navbar-start">
+                  <a class="navbar-item">
+              Change Your GPS Location
+            </a>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+    <!-- Here you can add buttons on the left -->
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- end of Nav Bar -->
+
     <br>
-    <div class="trails-contatiner" id="app">
+    <div class="trails-container">
         <div class="tile is-ancestor">
             <div class="tile is-horizontal">
                 <div class="tile is-parent is-4">

@@ -81,3 +81,12 @@
 .good{
   color: green;
 }
+
+
+.hide{
+  display: none;
+}
+
+.show{
+  display: block;
+}

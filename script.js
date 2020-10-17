@@ -1,20 +1,42 @@
 var results = 8
 var radius = 25
+
 var trailsListEl = $('.trails-list');
+
+
+var frontPageEl = $('#frontPage');
+
+var trailsPageEl = $('#trailsPage');
+
 var columns = 0;
 
 
-var locale = function (callback) {
+loadSplashPage()
+
+function loadSplashPage() {
+
+	trailsPageEl.addClass('hide')
+}
+
+function loadTrialInfo() {
+  frontPageEl.addClass('hide');
+  trailsPageEl.addClass('show');
+}
+
+
+ locale = function (callback) {
 	navigator.geolocation.getCurrentPosition(
 		function (position) {
 			var lat = position.coords.latitude;
 			var lon = position.coords.longitude;
 			callback(lat, lon);
+
 			// getWeather(lat, lon);
 		},
 		function (error) {
 			showError(error);
-			callback();
+			callback();		
+		
 		}
 	);
 };
@@ -22,6 +44,9 @@ var locale = function (callback) {
 var getTrails = function () {
 
 	locale(function (lat, lon) {
+
+		setTimeout(function() { loadTrialInfo(); }, 1000);
+			
 		var trailUrl = "https://trailapi-trailapi.p.rapidapi.com/trails/explore/?page=3&per_page= " + results + "&radius=" + radius + "&lat=" + lat + "&lon=" + lon
 
 		$.ajax({
