@@ -10,7 +10,7 @@ var locale = function (callback) {
 			var lat = position.coords.latitude;
 			var lon = position.coords.longitude;
 			callback(lat, lon);
-			getWeather(lat, lon);
+			// getWeather(lat, lon);
 		},
 		function (error) {
 			showError(error);
@@ -22,7 +22,6 @@ var locale = function (callback) {
 var getTrails = function () {
 
 	locale(function (lat, lon) {
-
 		var trailUrl = "https://trailapi-trailapi.p.rapidapi.com/trails/explore/?page=3&per_page= " + results + "&radius=" + radius + "&lat=" + lat + "&lon=" + lon
 
 		$.ajax({
@@ -68,17 +67,20 @@ var trailInfo = function (trailID) {
 		.then(function (response) {
 			var results = response.data;
 
+
 			results.forEach((data) => {
 				$(".trail-name").text(data.name)
 				$(".trail-name").addClass('title is-4')
 				$(".description").html("<span class=has-text-weight-bold>Trail Description:</span>  " + data.description)
 
+				//check to see if lenght is null
 				if (data.length != 0) {
 					$(".length").html("<br><span class=has-text-weight-bold>Trail Length:</span>  " + data.length + " miles");
 				} else {
 					$(".length").html("<br><span class=has-text-weight-bold>Trail Length:</span> <i>not available</i> ");
 				}
 
+				//check to see if rating is null
 				if (data.rating != 0) {
 					$(".rating").html("<br><span class=has-text-weight-bold>Rating:</span>  " + data.rating);
 				} else {
@@ -87,9 +89,18 @@ var trailInfo = function (trailID) {
 
 				$(".more-info").html("<br><span class=has-text-weight-bold>Detailed Info:</span> <a href='" + data.url + "' target=_blank>Click to find out more about this trail.</a>")
 
-				$(".image-div").attr('src', data.thumbnail)
-				$(".image-div").height(300).width(300);
-				$(".image-div").addClass('pt-3')
+				//check to see if thumbnail is null
+				if (data.thumbnail != null) {
+
+					$(".image-div").attr('src', data.thumbnail)
+					$(".image-div").height(300).width(300);
+					$(".image-div").addClass('pt-3')
+				} else {
+					var imgUrl = "./assets/default.png"
+					$(".image-div").attr('src', imgUrl)
+					$(".image-div").height(300).width(300);
+					$(".image-div").addClass('pt-3')
+				}
 			});
 		});
 }
