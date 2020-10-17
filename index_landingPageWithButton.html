@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Outdoor Adventure Planner</title>
+  <script src="https://kit.fontawesome.com/62686c0c57.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@800&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,800;1,400&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body>
+  <div id="frontPage">
+    <section class="hero is-light">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns">
+            <div class="column is-12">
+              <h1 class="title">
+                <img class="logoImage" src="assets/birdBike.svg" alt="Bird on a Bike Image">
+                <div class="column is-12">
+                  <h1 class="logoText">Outdoor Adventure Planner <span>&trade;<span></h1>
+                  <h2 class="logoTagLine">What type of adventures can the <strong>A-TEAM</strong> bring you on?</h2>
+                  <div class="geolocationDiv"></div>
+                  <button class="button button1" onclick="locale()">-> Click to display locations <- </button>
+                      <p id="latAndLong"></p>
+
+                </div>
+            </div>
+    </section>
+  </div>
+</body>
+<script src="script.js"></script>
+
+</html>
