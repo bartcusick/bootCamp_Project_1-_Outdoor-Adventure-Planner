@@ -1,84 +1,83 @@
-<<<<<<< HEAD
-.body {background-color:  #00d1b2;}
-.hikingBird {
-    width: 200px;
-    height: 200px;
-    
-        height: auto;
-        max-width: 50%;
-        max-height: 440px;
-    }
-    .body {
-        margin-top:3rem;
-        margin-bottom: 3rem;
-      }
-      
-      .card {
-        &.is-horizontal {
-          display: flex;
-          
-          .card-image {
-            width: 100%;
-            height: 100%;
-          }
-          
-          .card-stacked {
-            flex-direction: column;
-            flex: 1 1 auto;
-            display: flex;
-            position: relative;
-            
-            .card-content {
-              flex-grow: 1;
-            }
-          }
-        }
-        
-        &.is-fullimage {
-           background-color: transparent;
-          .card-image {
-            color: #fff !important;
-            .card-stacked {
-              position: absolute;
-              bottom: 0;
-              width: 100%;
-              background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
-              text-shadow: 0px 0px 2px #000000;
-              
-              .card-footer { 
-                border-color: transparent;
-              }
-              
-              .title, 
-              .subtitle { 
-                color: inherit;
-              }
-              
-              a {
-                color: inherit;
-                
-                &:hover {
-                  text-decoration: underline;
-                }
-              }
-            } 
-          }
-        }
-        
-    
-      }
-=======
 .body {
-  background-color: #97ce3f;
+  background-color: #00d1b2;
 }
 
-.hikingBird {
-  width: 200px;
-  height: 200px;
+/* Styles For The Front Page */
 
+.logoImage {
+   width: auto;
+   padding: 0px;
+   height: auto;
+   margin: auto;
+   /* max-width: 70%; */
+   max-height: 440px;
+   /* display: block; */
+}
+.logoText {
+  /* font-family: 'Vollkorn', serif; */
+   font-family: 'Ubuntu', sans-serif;
+   font-size: 35px; 
+   text-align: center;                 
+   width: 50%;
+   padding: 0px;
+   height: auto;
+   margin: auto;
+   /* max-width: 70%; */
+   max-height: 440px;
+   /* display: block; */
+   /* margin-left: auto;
+   margin-right: auto; */
+}
+.logoTagLine {
+  font-family: 'Vollkorn', serif;
+  font-size: 20px;
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
   height: auto;
-  max-width: 50%;
+  /* max-width: 70%; */
   max-height: 440px;
+  /* display: block; */
+  /* margin-left: auto;
+  margin-right: auto; */ 
 }
->>>>>>> 33c4b089fb26ca114461432d06c947acacccf7c9
 
+.button {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  text-size-adjust: inherit;
+  background: linear-gradient(90deg,#ecf004,#a8e52e);
+  border-radius: 10px;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  margin: auto;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.button1:hover {background: #ffab1a;}
+  /* .button2:hover { background: linear-gradient(90deg,#a8e52e,#ecf004;} */
+
+
+
+/* remove line breaks from descriptions */
+.description br {
+  display: none;
+}
+
+
+.fa-info-circle:hover {
+  color: blue;
+}
+
+
+
+.info:hover {
+  color:blue;
+}
+
+.good{
+  color: green;
+}
