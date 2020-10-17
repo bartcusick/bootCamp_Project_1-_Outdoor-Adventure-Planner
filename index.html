@@ -12,58 +12,45 @@
 
 </head>
 
-
-<section class="hero is-primary">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-12">
-          <h1 class="title">
-            <img class="hikingBird" src="https://i.imgur.com/ZEq3MUi.png">
-            <div class="column is-12">
-              Outdoor Adventure Planner
-          </h1>
-          <h2 class="subtitle">
-            What type of adventures can the <strong>A-TEAM</strong> bring you on?!!
-          </h2>
-
-        </div>
-      </div>
-      <div class="geolocationDiv"></div>
-      <p>Click button to display location using Latitude and Longitude</p>
-      <button class="button" onclick="getPosition()">Click me!</button>
-      <p id="latAndLong"></p>
-
-
-</section>
-
-
-
 <body>
-  <nav class="navbar navbar-dark bg-dark">
-    <span class="navbar-text">
-      <h1 class="text-center">Weather Dashboard</h1>
-    </span>
+  <nav class="navbar">
+    <img class="hikingBird" src="https://i.imgur.com/ZEq3MUi.png" width="64" height="64" alt="Bird on a bicycle">
+    <h1 class="text-center">Outdoor Adventure Planner</h1>
   </nav>
+  <!-- outdoor adventure planner -->
+  <br>
+  <button class="button" onclick="getPosition()">Click me to find an adventure!</button>
+  <p id="latAndLong"></p>
 
-  <!-- WEATHER TESTING -->
 
-    <!-- right side column -->
-    <div class="col-sm-5">
-      <div class="row p-8 my-3 border">
-        <ul id="weatherInfo">
-          <li id="weather"></li>
-          <li id="uvi"></li>
-          <li id="temp"></li>
-          <li id="humidity"></li>
+
+  <!-- Weather section -->
+  <div class="columns">
+    <!-- list of Trails -->
+    <div class="column">
+      <p id="trailName"></p>
+      <p id="trailPic"></p>
+    </div>
+
+    <div class="column">
+        <!-- Trail information here -->
+        <ul id ="trailInfo">
+          <li id="trailDescription"></li>
+
         </ul>
-      </div>
-      <div id="fiveDayForecast" class="row p-8 my-3 border">
-        <br>
-      </div>
+    </div>
+    <div class="column">
+      <ul id="weatherInfo">
+        <li id="weather"></li>
+        <li id="uvi"></li>
+        <li id="temp"></li>
+        <li id="humidity"></li>
+      </ul>
+    </div>
+  </div>
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-      <script src="script.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
