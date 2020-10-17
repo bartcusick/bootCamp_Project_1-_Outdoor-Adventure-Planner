@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Outdoor Adventure Planner</title>
+    <script src="https://kit.fontawesome.com/62686c0c57.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <style>
+        #myProgress {
+            width: 50%;
+            background-color: #ddd;
+        }
+
+        #myBar {
+            width: 1%;
+            height: 30px;
+            background-color: #4CAF50;
+        }
+    </style>
+
+    <body>
+
+        <div class="container">
+            <div>
+                <button class="button" onclick="getTrails()">Click me!</button>
+            </div>
+            <br>
+            <div class="container" id="app">
+                <div class="tile is-ancestor">
+                    <div class="tile is-horizontal">
+                        <div class="tile is-parent is-4">
+                            <div class="tile is-child box trails-list">
+                                <div class="title is-4">Select Trail</div>
+                            </div>
+                        </div>
+                        <div class="tile is-parent">
+                            <div class="information tile is-child box">
+                                <div class="trail-name"></div>
+                                <div class="description description"></div>
+                                <div class="length"></div>
+                                <div class="rating"></div>
+                                <img class="image-div" alt="Trail Image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-10 is-parent box">
+                    <ul id="weatherInfo">
+                        <li id="weather"></li>
+                        <li id="uvi"></li>
+                        <li id="temp"></li>
+                        <li id="humidity"></li>
+                    </ul>
+                </div>
+            </div>
+        </div> -->
+
+
+
+    </body>
+
+    <script src="script.js"></script>
+
+</html>

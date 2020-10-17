@@ -11,3 +11,22 @@
   max-height: 440px;
 }
 
+/* remove line breaks from descriptions */
+.description br {
+  display: none;
+}
+
+
+.fa-info-circle:hover {
+  color: blue;
+}
+
+
+
+.info:hover {
+  color:blue;
+}
+
+.good{
+  color: green;
+}
