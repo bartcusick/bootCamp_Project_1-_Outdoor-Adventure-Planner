@@ -1,20 +1,23 @@
 var results = 8
 var radius = 25
 var trailsListEl = $('.trails-list');
-var trailsInfoEl = $('.trails-info');
+var columns = 0;
 
 
 var locale = function (callback) {
-	navigator.geolocation.getCurrentPosition(function (position) {
-		var lat = position.coords.latitude;
-		var lon = position.coords.longitude;
-		callback(lat, lon);
-	}, function (error) {
-		showError(error);
-		callback();
-	});
+	navigator.geolocation.getCurrentPosition(
+		function (position) {
+			var lat = position.coords.latitude;
+			var lon = position.coords.longitude;
+			callback(lat, lon);
+			getWeather(lat, lon);
+		},
+		function (error) {
+			showError(error);
+			callback();
+		}
+	);
 };
-
 
 var getTrails = function () {
 
@@ -32,35 +35,21 @@ var getTrails = function () {
 			})
 
 			.then(function (response) {
-				console.log(response)
 				var results = response.data;
 
 				results.forEach((data) => {
-					// console.log('name :', data.name, ' ID: ', data.id);
 
-					var trailName = $('<div>')
-						.text(data.name)
-
-
-					var trailInfoButton = $('<button>')
-						.text('more info')
-						.attr('trail-id', data.id)
-						.addClass('info');
-
-					trailsListEl.append(trailName, trailInfoButton);
-
-
+					var trailName = $('<div>').text(data.name).attr('trail-id', data.id).addClass('info');
+					trailsListEl.append(trailName);
+					$(".trailsListEl").text(data.name)
 				});
 
 				$('.info').click(function () {
-					$( ".trail-info" ).empty();
+					$(".trail-info").empty();
 					var trailID = $(this).attr('trail-id');
 					trailInfo(trailID)
 				})
-
 			});
-
-
 	});
 };
 
@@ -77,22 +66,61 @@ var trailInfo = function (trailID) {
 			method: 'GET',
 		})
 		.then(function (response) {
-			// console.log(response)
 			var results = response.data;
 
 			results.forEach((data) => {
-				// console.log('name :', data.name, ' ID: ', data.id);
+				$(".trail-name").text(data.name)
+				$(".trail-name").addClass('title is-4')
+				$(".description").html("<span class=has-text-weight-bold>Trail Description:</span>  " + data.description)
 
-				var trailName = $('<div>').text(data.description)
-				.addClass('trail-info');
-				trailsInfoEl.append(trailName);
+				if (data.length != 0) {
+					$(".length").html("<br><span class=has-text-weight-bold>Trail Length:</span>  " + data.length + " miles");
+				} else {
+					$(".length").html("<br><span class=has-text-weight-bold>Trail Length:</span> <i>not available</i> ");
+				}
 
+				if (data.rating != 0) {
+					$(".rating").html("<br><span class=has-text-weight-bold>Rating:</span>  " + data.rating);
+				} else {
+					$(".rating").html("<br><span class=has-text-weight-bold>Rating:</span> <i>not available</i><br>");
+				}
 
+				$(".more-info").html("<br><span class=has-text-weight-bold>Detailed Info:</span> <a href='" + data.url + "' target=_blank>Click to find out more about this trail.</a>")
+
+				$(".image-div").attr('src', data.thumbnail)
+				$(".image-div").height(300).width(300);
+				$(".image-div").addClass('pt-3')
 			});
-
 		});
+}
 
+// Weather Variables
+var APIKey = "304328a5715add3e4e98ab718222d70d";
 
+// Weather api call
 
+function getWeather(lat, lon) {
+	var queryURL =
+		"https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=" + // { part } +
+		"&appid=" +
+		APIKey;
+	$.ajax({
+		url: queryURL,
+		method: "GET",
+	}).then(function (response) {
+		//Log the queryURL
+		console.log("queryURL:", queryURL);
 
+		var weatherInfo = $("#weatherInfo");
+		weatherInfo.append(weather);
+		var uvi = $("<li>").text(response.current.uvi);
+		weatherInfo.append(uvi);
+
+		$("#weather").text("today's weather: " + response.current.weather[0].main);
+		$("#uvi").html("Today's UVI:" + response.current.uvi);
+		$("#temp").text("today's temperature in kelvin: " + response.current.temp);
+		$("#humidity").text("today's humdity percentage: " + response.current.humidity);
+		// log the resulting object
+		console.log("weather response:", response);
+	});
 }
