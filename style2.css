@@ -1,0 +1,83 @@
+.body {
+  background-color: #00d1b2;
+}
+
+/* Styles For The Front Page */
+
+.logoImage {
+   width: auto;
+   padding: 0px;
+   height: auto;
+   margin: auto;
+   /* max-width: 70%; */
+   max-height: 440px;
+   /* display: block; */
+}
+.logoText {
+  /* font-family: 'Vollkorn', serif; */
+   font-family: 'Ubuntu', sans-serif;
+   font-size: 35px; 
+   text-align: center;                 
+   width: 50%;
+   padding: 0px;
+   height: auto;
+   margin: auto;
+   /* max-width: 70%; */
+   max-height: 440px;
+   /* display: block; */
+   /* margin-left: auto;
+   margin-right: auto; */
+}
+.logoTagLine {
+  font-family: 'Vollkorn', serif;
+  font-size: 20px;
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  height: auto;
+  /* max-width: 70%; */
+  max-height: 440px;
+  /* display: block; */
+  /* margin-left: auto;
+  margin-right: auto; */ 
+}
+
+.button {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  text-size-adjust: inherit;
+  background: linear-gradient(90deg,#ecf004,#a8e52e);
+  border-radius: 10px;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  margin: auto;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.button1:hover {background: #ffab1a;}
+  /* .button2:hover { background: linear-gradient(90deg,#a8e52e,#ecf004;} */
+
+
+
+/* remove line breaks from descriptions */
+.description br {
+  display: none;
+}
+
+
+.fa-info-circle:hover {
+  color: blue;
+}
+
+
+
+.info:hover {
+  color:blue;
+}
+
+.good{
+  color: green;
+}
