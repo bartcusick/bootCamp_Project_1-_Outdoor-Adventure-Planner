@@ -1,20 +1,41 @@
-var results = 8
+var results = 10
 var radius = 25
-var trailsListEl = $('.trails-list');
-var columns = 0;
+
+//get page IDs
+var frontPageEl = $('#frontPage');
+var trailsPageEl = $('#trailsPage');
 
 
-var locale = function (callback) {
+var trailsListEl = $('.trails-list')
+var imageDivEl = $('.image-div');
+
+
+loadSplashPage()
+
+function loadSplashPage() {
+	frontPageEl.removeClass('hide');
+}
+
+function loadTrialInfo() {
+	frontPageEl.addClass('hide');
+	trailsPageEl.removeClass('hide');
+	imageDivEl.addClass('hide')
+}
+
+
+locale = function (callback) {
 	navigator.geolocation.getCurrentPosition(
 		function (position) {
 			var lat = position.coords.latitude;
 			var lon = position.coords.longitude;
 			callback(lat, lon);
+
 			// getWeather(lat, lon);
 		},
 		function (error) {
 			showError(error);
-			callback();
+			callback();		
+		
 		}
 	);
 };
@@ -22,6 +43,9 @@ var locale = function (callback) {
 var getTrails = function () {
 
 	locale(function (lat, lon) {
+
+		setTimeout(function () {loadTrialInfo();}, 2000);
+
 		var trailUrl = "https://trailapi-trailapi.p.rapidapi.com/trails/explore/?page=3&per_page= " + results + "&radius=" + radius + "&lat=" + lat + "&lon=" + lon
 
 		$.ajax({
@@ -44,7 +68,6 @@ var getTrails = function () {
 				});
 
 				$('.info').click(function () {
-					$(".trail-info").empty();
 					var trailID = $(this).attr('trail-id');
 					trailInfo(trailID)
 				})
@@ -95,11 +118,13 @@ var trailInfo = function (trailID) {
 					$(".image-div").attr('src', data.thumbnail)
 					$(".image-div").height(300).width(300);
 					$(".image-div").addClass('pt-3')
+					$(".image-div").addClass('show')
 				} else {
 					var imgUrl = "./assets/default.png"
 					$(".image-div").attr('src', imgUrl)
 					$(".image-div").height(300).width(300);
 					$(".image-div").addClass('pt-3')
+					$(".image-div").addClass('show')
 				}
 			});
 		});
