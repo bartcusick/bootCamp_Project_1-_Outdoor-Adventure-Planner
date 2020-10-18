@@ -18,31 +18,26 @@
 </head>
 
 <body>
-  <div id="frontPage">
+  <div id="frontPage" class="hide">
     <section class="hero is-light">
       <div class="hero-body">
         <div class="container">
           <div class="columns">
             <div class="column is-12">
-              <h1 class="title">
                 <img class="logoImage" src="assets/birdBike.svg" alt="Bird on a Bike Image">
                 <div class="column is-12">
-                  <h1 class="logoText">Outdoor Adventure Planner <span>&trade;<span></h1>
-                  <h2 class="logoTagLine">What type of adventures can the <strong>A-TEAM</strong> bring you on?</h2>
+                  <h1 class="logoText title has-text-centered">Outdoor Adventure Planner <span>&trade;<span></h1>
+                  <h2 class="logoTagLine subtitle is-5 has-text-centered pt-5">Using your browser's GPS, Outdoor Adventure Planner will find bike trails within a 25 miles of your current location.</h2>
                   <div class="geolocationDiv"></div>
-                  <button class="button button1" onclick="getTrails()">-> Find Trails in Your Area <- </button>
-                      <p id="latAndLong"></p>
-
+                  <button class="button button1" onclick="getTrails()">-> Find Trails in Your Area <-</button>
                 </div>
             </div>
     </section>
   </div>
   
   
-  <div class="container" id="trailsPage">
-
+  <div class="container hide" id="trailsPage">
     <nav class="navbar is-light" role="navigation" aria-label="main navigation">
-      
       <div class="navbar-brand">
         <a .logoImageNavBar href="">
           <img src="assets/navBar_Logo.svg" width="500" height="64">
@@ -79,7 +74,7 @@
             <div class="tile is-horizontal">
                 <div class="tile is-parent is-4">
                     <div class="tile is-child box trails-list">
-                        <div class="title is-4">Select Trail</div>
+                        <div class="title is-4">Trail List</div>
                     </div>
                 </div>
                 <div class="tile is-parent">
@@ -98,6 +93,13 @@
     </div>
 </div>
 
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Outdoor Adventure Planner</strong> by A-Team. <br>Copyright &#169; 2020
+    </p>
+  </div>
+</footer>
 
 
 </body>
