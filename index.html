@@ -14,6 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,800;1,400&display=swap"
     rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Headland+One&family=Merriweather&display=swap" rel="stylesheet">
 
 </head>
 
@@ -24,7 +25,7 @@
         <div class="container">
           <div class="columns">
             <div class="column is-12">
-                <img class="logoImage" src="assets/birdBike.svg" alt="Bird on a Bike Image">
+                <img class="logoImage" src="assets/birdBike2.svg" alt="Bird on a Bike Image">
                 <div class="column is-12">
                   <h1 class="logoText title has-text-centered">Outdoor Adventure Planner <span>&trade;<span></h1>
                   <h2 class="logoTagLine subtitle is-5 has-text-centered pt-5">Using your browser's GPS, Outdoor Adventure Planner will find bike trails within a 25 miles of your current location.</h2>
@@ -38,16 +39,13 @@
   
   <div class="container hide" id="trailsPage">
     <nav class="navbar is-light" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
+      <div id="navbar-brand" class="navbar-brand">
         <a .logoImageNavBar href="">
           <img src="assets/navBar_Logo.svg" width="500" height="64">
         </a>
       </div>
       <div id="navbarBasicExample" class="navbar-menu is-hoverable">
         <div class="navbar-start">
-          <a class="navbar-item">
-            Home
-          </a>
           <div class="navbar-menu is-hoverable">
               <div class="navbar-start">
                   <a class="navbar-item">
@@ -74,18 +72,18 @@
             <div class="tile is-horizontal">
                 <div class="tile is-parent is-4">
                     <div class="tile is-child box trails-list">
-                        <div class="title is-4">Trail List</div>
+                        <div class="trailList is-4">Trail List</div>
                     </div>
                 </div>
                 <div class="tile is-parent">
                     <div class="information tile is-child box">
                         <div class="trail-name"></div>
                         <!-- place weather div here -->
-                        <div class="description description"></div>
-                        <div class="length"></div>
-                        <div class="rating"></div>
-                        <img class="image-div" alt="Trail Image">
-                        <div class="more-info"></div>
+                        <div id="myFont" class="description description"></div>
+                        <div id="myFont" class="length"></div>
+                        <div id="myFont" class="rating"></div>
+                        <img id="myFont" class="image-div" alt="Trail Image">
+                        <div id="myFont" class="more-info"></div>
                     </div>
                 </div>
             </div>

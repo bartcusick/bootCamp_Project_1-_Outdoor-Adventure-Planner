@@ -22,8 +22,13 @@
 .logoText {
    font-family: 'Ubuntu', sans-serif;
 }
+
 .logoTagLine {
   font-family: 'Vollkorn', serif;
+}
+
+#navbar-brand{
+  margin-left: 20px;
 }
 
 .button {
@@ -42,7 +47,47 @@
 }
 .button1:hover {background: #ffab1a;}
   /* .button2:hover { background: linear-gradient(90deg,#a8e52e,#ecf004;} */
+  .trailList {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    border-radius: 20px 20px 0px 0px;
+    background: #73AD21;
+    background: linear-gradient(90deg,#ecf004,#a8e52e);
+    padding: 10px; 
+    width: 420px;
+    height: 50px;  
+  }
+  .trail-name {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    border-radius: 20px 20px 0px 0px;
+    background: #73AD21;
+    background: linear-gradient(90deg,#ecf004,#a8e52e);
+    padding: 10px; 
+  }
+  .info {
+    font-family: 'Vollkorn', serif;
+    font-size: 20px;
+    margin-left: 20px;
+    padding: 10px; 
+  }
 
+
+  #trail-id {
+    font-family: 'Vollkorn', serif;
+    font-size: 16px; 
+  }
+  #ubuntu{
+    font-family: 'Ubuntu', sans-serif;
+    padding: 10px; 
+  }
+  #myFont{
+    /* font-family: 'Merriweather', serif; */
+    font-family: 'Vollkorn', serif;
+    font-size: 20px;
+    /* padding: 10px; */
+    margin-left: 30px;
+  }
 
 
 /* remove line breaks from descriptions */
