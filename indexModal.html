@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
+    <title>Document</title>
+    <script src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,800;1,400&display=swap"
+    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Headland+One&family=Merriweather&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <p>
+                <a class="button button1 modal-button" data-target="#modal">Launch example modal</a>
+            </p>
+            <div id="modal" class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-content">
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-64x64">
+                                    <img src="assets/birdBike2.svg" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>Outdoor Adventure planner would like to use your <strong>Current GPS location</strong> location to find trail suggestions near you.</p>
+                                </div>
+                                <nav class="level">
+                                    <div class="level-left">
+                                        <a class="level-item">
+                                            <a id ="accept" class="button button1">Accept</a>
+                                        </a>
+                                        <a class="level-item">
+                                            <a id ="decline" class="button button1">Decline</a>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <button id ="acceptX" class="modal-close is-large" aria-label="close"></button>
+            </div>
+        </div>
+    </section>
+    <script>
+        $(".modal-button").click(function () {
+            var target = $(this).data("target");
+            $("html").addClass("is-clipped");
+            $(target).addClass("is-active");
+        });
+
+        $(".modal-close").click(function () {
+            $("html").removeClass("is-clipped");
+            $(this).parent().removeClass("is-active");
+        });
+
+        $(".modal-background").click(function () {
+            $("html").removeClass("is-clipped");
+            $(this).parent().removeClass("is-active");
+        });
+        $("#acceptX").click(function () {
+            console.log("iambeingClicked")
+            $("html").removeClass("is-clipped");
+            $(this).parent().removeClass("is-active");
+        });
+
+        $("#accept").click(function () {
+            console.log("iambeingClicked")
+            $("html").removeClass("is-clipped");
+            $(this).parent().removeClass("is-active");
+        });
+
+        $("#decline").click(function () {
+            console.log("iambeingClicked")
+            $("html").removeClass("is-clipped");
+            $(this).parent().removeClass("is-active");
+        });
+    </script>
+</body>
+
+</html>
