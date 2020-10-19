@@ -35,7 +35,7 @@ locale = function (callback) {
 			progressBarEl.removeClass('hide');
 			loadingBar()
 
-			// getWeather(lat, lon);
+			getWeather(lat, lon);
 		},
 		function (error) {
 			showError(error);
@@ -153,15 +153,15 @@ function getWeather(lat, lon) {
 		//Log the queryURL
 		console.log("queryURL:", queryURL);
 
-		var weatherInfo = $("#weatherInfo");
-		weatherInfo.append(weather);
-		var uvi = $("<li>").text(response.current.uvi);
-		weatherInfo.append(uvi);
+		// var weatherInfo = $("#weatherInfo");
+		// weatherInfo.append(weather);
+		// var uvi = $("<li>").text(response.current.uvi);
+		// weatherInfo.append(uvi);
 
-		$("#weather").text("today's weather: " + response.current.weather[0].main);
-		$("#uvi").html("Today's UVI:" + response.current.uvi);
-		$("#temp").text("today's temperature in kelvin: " + response.current.temp);
-		$("#humidity").text("today's humdity percentage: " + response.current.humidity);
+		$("#weather").text(response.current.weather[0].main);
+		$("#uvi").text("UVI: " + response.current.uvi);
+		$("#temp").text("Today's temperature in kelvin: " + response.current.temp);
+		$("#humidity").text("Humidity: " + response.current.humidity + "%");
 		// log the resulting object
 		console.log("weather response:", response);
 	});
