@@ -1,0 +1,120 @@
+.body {
+  background-color: #00d1b2;
+}
+
+/* Styles For The Front Page */
+
+ .logoImage {
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 350px;
+} 
+
+/* set image to smaller for landscape screens */
+@media screen and (max-width: 992px) {
+  .logoImage {
+    max-width: 200px;
+  }
+}
+
+.logoText {
+   font-family: 'Ubuntu', sans-serif;
+}
+
+.logoTagLine {
+  font-family: 'Vollkorn', serif;
+}
+
+#navbar-brand{
+  margin-left: 20px;
+}
+
+.button {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  text-size-adjust: inherit;
+  background: linear-gradient(90deg,#ecf004,#a8e52e);
+  border-radius: 10px;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  margin: auto;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.button1:hover {background: #ffab1a;}
+  /* .button2:hover { background: linear-gradient(90deg,#a8e52e,#ecf004;} */
+  .trailList {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    border-radius: 20px 20px 0px 0px;
+    background: #73AD21;
+    background: linear-gradient(90deg,#ecf004,#a8e52e);
+    padding: 10px; 
+    width: 420px;
+    height: 50px;  
+  }
+  .trail-name {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    border-radius: 20px 20px 0px 0px;
+    background: #73AD21;
+    background: linear-gradient(90deg,#ecf004,#a8e52e);
+    padding: 10px; 
+  }
+  .info {
+    font-family: 'Vollkorn', serif;
+    font-size: 20px;
+    margin-left: 20px;
+    padding: 10px; 
+  }
+
+
+  #trail-id {
+    font-family: 'Vollkorn', serif;
+    font-size: 16px; 
+  }
+  #ubuntu{
+    font-family: 'Ubuntu', sans-serif;
+    padding: 10px; 
+  }
+  #myFont{
+    /* font-family: 'Merriweather', serif; */
+    font-family: 'Vollkorn', serif;
+    font-size: 20px;
+    /* padding: 10px; */
+    margin-left: 30px;
+  }
+
+
+/* remove line breaks from descriptions */
+.description br {
+  display: none;
+}
+
+
+.fa-info-circle:hover {
+  color: blue;
+}
+
+
+
+.info:hover {
+  color:blue;
+}
+
+.good{
+  color: green;
+}
+
+
+.hide{
+  display: none;
+}
+
+.show{
+  display: block;
+}
