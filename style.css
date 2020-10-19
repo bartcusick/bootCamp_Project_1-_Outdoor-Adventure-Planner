@@ -129,4 +129,18 @@
   width: 1%;
   height: 30px;
   background-color: #a8e52e;
+.weatherBtn {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  text-size-adjust: inherit;
+  background: linear-gradient(90deg,#ecf004,#a8e52e);
+  border-radius: 10px;
+  padding: 10px;
+  text-decoration: none;
+  /* display: block; */
+  margin: auto;
+  transition-duration: 0.4s;
+  /* cursor: pointer; */
+  pointer-events: none;
 }
