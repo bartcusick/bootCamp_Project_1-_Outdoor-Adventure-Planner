@@ -8,7 +8,7 @@ var trailsPageEl = $('#trailsPage');
 
 var trailsListEl = $('.trails-list')
 var imageDivEl = $('.image-div');
-
+var trailNameEl = $('.trail-name');
 
 loadSplashPage()
 
@@ -20,6 +20,7 @@ function loadTrialInfo() {
 	frontPageEl.addClass('hide');
 	trailsPageEl.removeClass('hide');
 	imageDivEl.addClass('hide')
+	trailNameEl.addClass('hide')
 }
 
 
@@ -92,6 +93,7 @@ var trailInfo = function (trailID) {
 
 
 			results.forEach((data) => {
+				trailNameEl.removeClass('hide')
 				$(".trail-name").text(data.name)
 				$(".trail-name").addClass('title is-4')
 				$(".description").html("<span class=has-text-weight-bold>Trail Description:</span>  " + data.description)
