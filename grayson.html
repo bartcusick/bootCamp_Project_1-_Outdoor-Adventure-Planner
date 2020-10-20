@@ -9,202 +9,108 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@800&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,800;1,400&display=swap"
+    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Headland+One&family=Merriweather&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
-  <nav class="navbar">
-    <img class="hikingBird" src="https://i.imgur.com/ZEq3MUi.png" width="64" height="64" alt="Bird on a bicycle">
-    <h1 class="text-center">Outdoor Adventure Planner</h1>
-  </nav>
-  <!-- outdoor adventure planner -->
-  <br>
-  <button class="button" onclick="getPosition()">Click me to find an adventure!</button>
-  <p id="latAndLong"></p>
-
-
-
-  <!-- Weather section -->
-  <div class="columns">
-    <!-- list of Trails -->
-    <div class="column">
-      <p id="trailName"></p>
-      <p id="trailPic"></p>
-    </div>
-
-    <div class="column">
-        <!-- Trail information here -->
-        <ul id ="trailInfo">
-          <li id="trailDescription"></li>
-
-        </ul>
-    </div>
-    <div class="column">
-      <ul id="weatherInfo">
-        <li id="weather"></li>
-        <li id="uvi"></li>
-        <li id="temp"></li>
-        <li id="humidity"></li>
-      </ul>
-    </div>
+  <div id="frontPage" class="hide">
+    <section class="hero is-light">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns">
+            <div class="column is-12">
+              <img class="logoImage" src="assets/birdBike2.svg" alt="Bird on a Bike Image">
+              <div class="column is-12">
+                <h1 class="logoText title has-text-centered">Outdoor Adventure Planner <span>&trade;<span></h1>
+                <h2 class="logoTagLine subtitle is-5 has-text-centered pt-5">Using your browser's GPS, Outdoor Adventure
+                  Planner will find bike trails within a 25 miles of your current location.</h2>
+                <div class="geolocationDiv"></div>
+                <button class="button button1" onclick="getTrails()">-> Find Trails in Your Area <-</button> </div> <div
+                    id="myProgress" class="hide subtitle is-6 has-text-centered">
+                    <div class="py-3">Please wait while we search for trails</div>
+                    <div id="myBar"></div>
+              </div>
+            </div>
+    </section>
   </div>
+  
+  
+  <div class="container hide" id="trailsPage">
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+      <div id="navbar-brand" class="navbar-brand">
+        <a .logoImageNavBar href="">
+          <img src="assets/navBar_Logo.svg" width="500" height="64">
+        </a>
+      </div>
+      <div id="navbarBasicExample" class="navbar-menu is-hoverable">
+        <div class="navbar-start">
+          <div class="navbar-menu is-hoverable">
+              <div class="navbar-start">
+                  <a class="navbar-item">
+              Change Your GPS Location
+            </a>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+    <!-- Here you can add buttons on the left -->
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- end of Nav Bar -->
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="script.js"></script>
+    <br>
+    <div class="trails-container">
+        <div class="tile is-ancestor">
+            <div class="tile is-horizontal">
+                <div class="tile is-parent is-4">
+                    <div class="tile is-child box trails-list">
+                        <div class="trailList is-4">Trail List</div>
+                    </div>
+                </div>
+                <div class="tile is-parent">
+                    <div class="information tile is-child box">
+                        <div class="trail-name"></div>
+                        <!-- place weather div here -->
+                        <div id="weatherInfo">
+                          <button class="weatherBtn" id="weather"></button>
+                          <button class="weatherBtn" id="uvi"></button>
+                          <button class="weatherBtn" id="temp"></button>
+                          <button class="weatherBtn" id="humidity"></button>
+                        </div>
+                        <div id="myFont" class="description description"></div>
+                        <div id="myFont" class="length"></div>
+                        <div id="myFont" class="rating"></div>
+                        <img id="myFont" class="image-div" alt="Trail Image">
+                        <div id="myFont" class="more-info"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-
-
-  <!-- script.js file stuff -->
-<script>
-    var results = 8;
-var radius = 50;
-
-var locale = function (callback) {
-  navigator.geolocation.getCurrentPosition(
-    function (position) {
-      var lat = position.coords.latitude;
-      console.log("lat:", lat);
-      var lon = position.coords.longitude;
-      console.log("lon:", lon);
-      callback(lat, lon);
-      getWeather(lat, lon);
-    },
-    function (error) {
-      showError(error);
-      callback();
-    }
-  );
-};
-
-var getPosition = function () {
-  locale(function (lat, lon) {
-    var trailUrl =
-      "https://trailapi-trailapi.p.rapidapi.com/trails/explore/?page=3&per_page= " +
-      results +
-      "&radius=" +
-      radius +
-      "&lat=" +
-      lat +
-      "&lon=" +
-      lon;
-
-    $.ajax({
-      async: true,
-      crossDomain: true,
-      url: trailUrl,
-      headers: {
-        "x-rapidapi-host": "trailapi-trailapi.p.rapidapi.com",
-        "x-rapidapi-key": "aa1f2dda11msh22ea2d650da7d5fp193f76jsn94dfb4977b89",
-      },
-      method: "GET",
-    }).then(function (response) {
-      var results = response.data;
-      console.log("trails response:", response);
-
-      // <a href="url">link text</a>
-
-      $("#trailName").html(
-        "<br>" +
-          "<a href='" +
-          response.data[0].url +
-          "'>" +
-          response.data[0].name +
-          "</a><br><br>"
-      );
-
-      $("#trailPic").html(
-        "<img class='TrailsWebPic' src='" +
-          response.data[0].thumbnail +
-          "' width=auto height= alt='Picture from trail'></img>" +
-          "<br>"
-      );
-      $("#trailDescription").html(
-        "Trail Description: " + response.data[0].description + "<br>"
-      );
-      results.forEach((data) => {
-        console.log("name :", data.name, " ID: ", data.id);
-      });
-    });
-  });
-};
-
-// Weather Variables
-var APIKey = "304328a5715add3e4e98ab718222d70d";
-
-// Weather api call
-
-function getWeather(lat, lon) {
-  var queryURL =
-    "https://api.openweathermap.org/data/2.5/onecall?lat=" +
-    lat +
-    "&lon=" +
-    lon +
-    "&exclude=" +
-    // { part } +
-    "&appid=" +
-    APIKey;
-  $.ajax({
-    url: queryURL,
-    method: "GET",
-  }).then(function (response) {
-    //Log the queryURL
-    console.log("queryURL:", queryURL);
-
-    // var weatherInfo = $("#weatherInfo");
-    // weatherInfo.append(weather);
-    // var uvi = $("<li>").text(response.current.uvi);
-    // weatherInfo.append(uvi);
-
-    $("#weather").text("today's weather: " + response.current.weather[0].main);
-    $("#uvi").html("Today's UVI:" + response.current.uvi);
-    $("#temp").text("Today's temperature in kelvin: " + response.current.temp);
-    $("#humidity").text(
-      "Today's humdity percentage: " + response.current.humidity
-    );
-    // log the resulting object
-    console.log("weather response:", response);
-  });
-}
-
-</script>
-
-<!-- .css information -->
-<!-- .body {
-  background-color: brown;
-  font-family: sans-serif;
-}
-
-.bikingBird {
-  height: auto;
-  max-width: 64px;
-  max-height: 64px;
-}
-
-h1 {
-  font-weight: 800;
-  font-size: x-large;
-  padding: 10px 10px;
-  font-family: serif;
-
-}
-.navbar {
-  background-color: #4CAF50;
-  color: black;
-  padding: 10px;
-}
-.button {
-  background-color: #4CAF50;
-  color: black;
-  margin: auto;
-  width: 100%;
-  border: 3px solid green;
-  padding: 10px;
-} -->
-
-
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Outdoor Adventure Planner</strong> by A-Team. <br>Copyright &#169; 2020
+    </p>
+  </div>
+</footer>
 
 
 </body>
-
+<script src="script.js"></script>
 
 </html>
