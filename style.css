@@ -131,26 +131,58 @@
   background-color: #a8e52e;
 }
 
-.weatherBtn1 {
+.weatherBar {
   font-family: 'Vollkorn', sans-serif;
   font-size: 20px;
   text-align: center;
-  background-color: #B7E2F7;
+  background-color:transparent;
+  /* background-color: #B7E2F7; */
   border-radius:  10px 10px 0px 0px;
   padding: 10px;
   border-style:none;
 }
 
+.weatherBtn1 {
+  font-family: 'Vollkorn', sans-serif;
+  font-weight: bold;
+  background-color: #95eff5;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  border-radius:  10px 0px 0px 0px;
+  border-style:none;
+}
 .weatherBtn2 {
   font-family: 'Vollkorn', sans-serif;
   font-weight: bold;
-  background-color:transparent;
+  background-color: #eff595;
   font-size: 20px;
   text-align: center;
   padding: 10px;
   border-radius:  0px 0px 0px 0px;
   border-style:none;
 }
+.weatherBtn3 {
+  font-family: 'Vollkorn', sans-serif;
+  font-weight: bold;
+  background-color: #f5d295;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  border-radius:  0px 0px 0px 0px;
+  border-style:none;
+}
+.weatherBtn4 {
+  font-family: 'Vollkorn', sans-serif;
+  font-weight: bold;
+  background-color: #f5ab95;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  border-radius:  0px 10px 0px 0px;
+  border-style:none;
+}
+
 
 .round {
   border-radius:  10px 10px 10px 10px;
@@ -158,4 +190,8 @@
 
 #weatherInfo {
   margin-left: 30px;
+}
+#description {
+  padding: 10px;
+  /* margin-top: 30px; */
 }
