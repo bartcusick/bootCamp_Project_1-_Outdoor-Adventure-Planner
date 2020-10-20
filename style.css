@@ -85,12 +85,18 @@
   
   /* mouse over link */
   a:hover {
-    color: inherit;
+    color: rgb(20, 181, 20);
+    text-decoration: underline;
   }
   
   /* selected link */
   a:active {
     color: inherit;
+  }
+  
+
+  #location:hover {
+    color:inherit;
   }
 
 
@@ -167,7 +173,20 @@
   border-style:none;
 }
 
+
 .weatherBtn1 {
+
+  background-color: #95eff5;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  border-radius:  10px 0px 0px 0px;
+  border-style:none;
+}
+
+
+
+.weatherBtn1text {
   font-family: 'Vollkorn', sans-serif;
   font-weight: bold;
   background-color: #95eff5;
@@ -177,6 +196,18 @@
   border-radius:  10px 0px 0px 0px;
   border-style:none;
 }
+
+.weatherBtnIcon {
+  font-weight: bold;
+  background-color: #95eff5;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  border-radius:  10px 0px 0px 0px;
+  border-style:none;
+}
+
+
 .weatherBtn2 {
   font-family: 'Vollkorn', sans-serif;
   font-weight: bold;
@@ -219,7 +250,7 @@
 
 .image-div {
   float: left;
-  margin: 20px 5 0 0;
+  margin: 20px 20px 0 0;
   /* border: 1px solid black; */
 }
   
