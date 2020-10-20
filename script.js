@@ -217,6 +217,20 @@ var trailInfo = function (trailID) {
 				//more info URL
 				$(".more-info").html("<br><span class=has-text-weight-bold>Detailed Info:</span> <a href='" + data.url + "' target=_blank>Click to find out more about this trail.</a>")
 
+
+				if (data.directions === 'See map.') {
+					$('.directions').addClass('pt-3');
+					$('.directions').html(
+						'<span class=has-text-weight-bold>Trail Directions:</span> See More Detailed Info for Directions'
+					);
+					} else {
+					console.log(data);
+					$('.directions').text(data.directions);
+					$('.directions').addClass('pt-3');
+					$('.directions').html(
+						'<span class=has-text-weight-bold>Trail Directions:</span>' + data.directions
+				);
+				}
 				//check to see if thumbnail is null
 				if (data.thumbnail != null) {
 					$(".image-div").attr('src', data.thumbnail)
@@ -256,7 +270,7 @@ function getWeather(lat, lon) {
 		console.log('iconURL:', iconURL)
 
 		
-		$("#weather").html('<img id = weatherIcon" src=' + iconURL + ' alt="' + weatherAltTag + '" height=20px width=20px>' );
+		$("#weather").html('<span class=weatherBtn1text>' + weatherAltTag + ' </span>' + '<span class=weatherBtnIcon><img id = weatherIcon" src=' + iconURL + ' alt="' + weatherAltTag + '" height=20px width=20px></span>' );
 
 		$("#uvi").html("UVI: " + response.current.uvi);
 		$("#temp").html(response.current.temp + "°");
