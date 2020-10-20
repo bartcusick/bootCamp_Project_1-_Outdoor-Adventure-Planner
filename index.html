@@ -14,16 +14,14 @@
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4z0IwwSlHnR5SUeOxpprY4tEHKRqknl8&callback=initMap&libraries=&v=weekly"
     defer></script>
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@800&display=swap" rel="stylesheet"> -->
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,800;1,400&display=swap"
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Headland+One&family=Merriweather&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
-
+  <!-- first page start -->
   <div id="frontPage" class="hide">
     <section class="hero is-light">
       <div class="hero-body">
@@ -33,15 +31,15 @@
               <img class="logoImage" src="assets/birdBike2.svg" alt="Bird on a Bike Image">
               <div class="column is-12">
                 <h1 class="logoText title has-text-centered">Outdoor Adventure Planner <span>&trade;<span></h1>
-                <h2 class="logoTagLine subtitle is-5 has-text-centered pt-5">Put in your city and state and Outdoor Adventure
+                <h2 class="logoTagLine subtitle is-5 has-text-centered pt-5">Put in your city and state and Outdoor
+                  Adventure
                   Planner will find you a list of bike trails within a 25 miles.</h2>
                 <div class="geolocationDiv"></div>
-                <!-- <button class="button button1" onclick="getTrails()">-> Find Trails in Your Area <-</button>  -->
               </div>
               <div class="field">
                 <div class="columns is-mobile is-centered pb-3">
                   <div class="control has-icons-left">
-                    <input id="address" class="input is-hovered"" type="text" placeholder="City, State" >
+                    <input id="address" class="input is-hovered"" type=" text" placeholder="City, State">
                     <span class="icon is-small is-left">
                       <i class="fa fa-map-marker "></i>
                     </span>
@@ -50,7 +48,6 @@
               </div>
               <input id="submit" type="button" value="-> Find Trails in Your Area <-" class="button button1" />
               <div id="myProgress" class="hide subtitle is-6 has-text-centered pt-3">
-                <!-- <div class="py-3">Please wait while we search for trails</div> -->
                 <div id="myBar" class="pt-3"></div>
               </div>
               <div id="map" class="hide"></div>
@@ -60,34 +57,32 @@
       </div>
     </section>
   </div>
-
-
-  
+  <!-- first page end -->
+  <!-- trails page start -->
   <div class="container hide" id="trailsPage">
+    <!-- nav bar start -->
     <nav class="navbar is-light" role="navigation" aria-label="main navigation">
       <div id="navbar-brand" class="navbar-brand">
         <a .logoImageNavBar href="">
-          <img src="assets/navBar_Logo.svg" alt="Bird on a Bike logo Outdoor Adventure Planner tm" width="500" height="64">
+          <img src="assets/navBar_Logo.svg" alt="Bird on a Bike logo Outdoor Adventure Planner tm" width="500"
+            height="64">
         </a>
       </div>
     </nav>
-    <!-- end of Nav Bar -->
-
-    <br>
+    <!-- nav bar end -->
     <div class="trails-container">
       <div class="tile is-ancestor">
         <div class="tile is-horizontal">
           <div class="tile is-parent is-4">
             <div class="tile is-child box trails-list">
               <div class="trailList is-4">Trail List</div>
-              
-              <br>
-              <div class="columns is-mobile is-centered">
+              <div class="columns is-mobile is-centered pt-4">
                 <div class="column is-half">
-                    <i class="fa fa-map-marker is-centered" ><a .logoImageNavBar href="" id="location"></i>  Change Location</a>
+                  <i class="fa fa-map-marker is-centered"><a .logoImageNavBar href="" id="location"></i> Change
+                  Location</a>
                 </div>
               </div>
-         
+
             </div>
           </div>
           <div class="tile is-parent">
@@ -111,18 +106,47 @@
       </div>
     </div>
   </div>
-
-
-  <footer class="footer">
+  <!-- trails page start -->
+  <!-- footer start -->
+  <footer class="footer hide">
     <div class="content has-text-centered">
       <p>
         <strong>Outdoor Adventure Planner</strong> by A-Team. <br>Copyright &#169; 2020
       </p>
     </div>
   </footer>
-
-
+  <!-- footer end -->
 </body>
 <script src="script.js"></script>
 
 </html>
+<!-- Geocode Error Modal Start-->
+<div id="modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box">
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-64x64">
+            <img src="assets/birdBike2.svg" alt="Image">
+          </figure>
+        </div>
+        <div class="media-content">
+          <div class="content">
+            <p><strong>Outdoor Adventure Planner</strong> requires a City and Sate to get a list of trails in your area.
+            </p>
+          </div>
+          <nav class="level">
+            <div class="level-left">
+              <a class="level-item">
+                <a id="accept" class="button button1">Accept</a>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </article>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</div>
+<!-- Geocode Error Modal End-->
