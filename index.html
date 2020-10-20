@@ -10,15 +10,20 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4z0IwwSlHnR5SUeOxpprY4tEHKRqknl8&callback=initMap&libraries=&v=weekly"
+    defer></script>
   <!-- <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@800&display=swap" rel="stylesheet"> -->
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,800;1,400&display=swap"
     rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Headland+One&family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Headland+One&family=Merriweather&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
+
   <div id="frontPage" class="hide">
     <section class="hero is-light">
       <div class="hero-body">
@@ -28,87 +33,93 @@
               <img class="logoImage" src="assets/birdBike2.svg" alt="Bird on a Bike Image">
               <div class="column is-12">
                 <h1 class="logoText title has-text-centered">Outdoor Adventure Planner <span>&trade;<span></h1>
-                <h2 class="logoTagLine subtitle is-5 has-text-centered pt-5">Using your browser's GPS, Outdoor Adventure
-                  Planner will find bike trails within a 25 miles of your current location.</h2>
+                <h2 class="logoTagLine subtitle is-5 has-text-centered pt-5">Put in your city and state and Outdoor Adventure
+                  Planner will find you a list of bike trails within a 25 miles.</h2>
                 <div class="geolocationDiv"></div>
-                <button class="button button1" onclick="getTrails()">-> Find Trails in Your Area <-</button> </div> <div
-                    id="myProgress" class="hide subtitle is-6 has-text-centered">
-                    <div class="py-3">Please wait while we search for trails</div>
-                    <div id="myBar"></div>
+                <!-- <button class="button button1" onclick="getTrails()">-> Find Trails in Your Area <-</button>  -->
               </div>
+              <div class="field">
+                <div class="columns is-mobile is-centered pb-3">
+                  <div class="control has-icons-left">
+                    <input id="address" class="input is-hovered"" type="text" placeholder="City, State" >
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-map-marker "></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <input id="submit" type="button" value="-> Find Trails in Your Area <-" class="button button1" />
+              <div id="myProgress" class="hide subtitle is-6 has-text-centered pt-3">
+                <!-- <div class="py-3">Please wait while we search for trails</div> -->
+                <div id="myBar" class="pt-3"></div>
+              </div>
+              <div id="map" class="hide"></div>
             </div>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
-  
+
+
   
   <div class="container hide" id="trailsPage">
     <nav class="navbar is-light" role="navigation" aria-label="main navigation">
       <div id="navbar-brand" class="navbar-brand">
         <a .logoImageNavBar href="">
-          <img src="assets/navBar_Logo.svg" width="500" height="64">
+          <img src="assets/navBar_Logo.svg" alt="Bird on a Bike logo Outdoor Adventure Planner tm" width="500" height="64">
         </a>
-      </div>
-      <div id="navbarBasicExample" class="navbar-menu is-hoverable">
-        <div class="navbar-start">
-          <div class="navbar-menu is-hoverable">
-              <div class="navbar-start">
-                  <a class="navbar-item">
-              Change Your GPS Location
-            </a>
-            </div>
-          </div>
-        </div>
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-    <!-- Here you can add buttons on the left -->
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
     </nav>
     <!-- end of Nav Bar -->
 
     <br>
     <div class="trails-container">
-        <div class="tile is-ancestor">
-            <div class="tile is-horizontal">
-                <div class="tile is-parent is-4">
-                    <div class="tile is-child box trails-list">
-                        <div class="trailList is-4">Trail List</div>
-                    </div>
+      <div class="tile is-ancestor">
+        <div class="tile is-horizontal">
+          <div class="tile is-parent is-4">
+            <div class="tile is-child box trails-list">
+              <div class="trailList is-4">Trail List</div>
+              
+              <br>
+              <div class="columns is-mobile is-centered">
+                <div class="column is-half">
+                    <i class="fa fa-map-marker is-centered" ><a .logoImageNavBar href="" id="location"></i>  Change Location</a>
                 </div>
-                <div class="tile is-parent">
-                    <div class="information tile is-child box">
-                        <div class="trail-name"></div>
-                        <!-- place weather div here -->
-                        <div id="weatherInfo" class="hide">
-                          <button class="weatherBtn" id="weather"></button>
-                          <button class="weatherBtn" id="uvi"></button>
-                          <button class="weatherBtn" id="temp"></button>
-                          <button class="weatherBtn" id="humidity"></button>
-                        </div>
-                        <div id="myFont" class="description description"></div>
-                        <div id="myFont" class="length"></div>
-                        <div id="myFont" class="rating"></div>
-                        <img id="myFont" class="image-div" alt="Trail Image">
-                        <div id="myFont" class="more-info"></div>
-                    </div>
-                </div>
+              </div>
+         
             </div>
+          </div>
+          <div class="tile is-parent">
+            <div class="information tile is-child box">
+              <div class="trail-name"></div>
+              <div id="weatherInfo" class="tile is-parent is-11.5 weatherBar">
+                <button class="weatherBtn1 hide" id="weather"></button>
+                <button class="weatherBtn2 hide" id="uvi"></button>
+                <button class="weatherBtn3 hide" id="temp"></button>
+                <button class="weatherBtn4 hide" id="humidity"></button>
+              </div>
+              <div id="myFont" class="placeholder"></div>
+              <div id="myFont" class="description description"></div>
+              <div id="myFont" class="length"></div>
+              <div id="myFont" class="rating"></div>
+              <img id="myFont" class="image-div" alt="Trail Image">
+              <div id="myFont" class="more-info"></div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-
-
-<footer class="footer">
-  <div class="content has-text-centered">
-    <p>
-      <strong>Outdoor Adventure Planner</strong> by A-Team. <br>Copyright &#169; 2020
-    </p>
   </div>
-</footer>
+
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Outdoor Adventure Planner</strong> by A-Team. <br>Copyright &#169; 2020
+      </p>
+    </div>
+  </footer>
 
 
 </body>
