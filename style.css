@@ -74,6 +74,31 @@
   }
 
 
+  a:link {
+    color: inherit;
+  }
+  
+  /* visited link */
+  a:visited {
+    color: inherit;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: inherit;
+  }
+  
+  /* selected link */
+  a:active {
+    color: inherit;
+  }
+
+
+  #location{
+    font-family: 'Ubuntu', sans-serif;
+      text-decoration: none; /* no underline */
+  }
+
   #trail-id {
     font-family: 'Vollkorn', serif;
     font-size: 16px; 
@@ -196,9 +221,16 @@
   float: left;
   margin: 20px 5 0 0;
   /* border: 1px solid black; */
+}
   
 #description {
   padding: 10px;
   /* margin-top: 30px; */
 
 }
+
+#map {
+  height: 40%;
+  width: 20%;
+}
+
