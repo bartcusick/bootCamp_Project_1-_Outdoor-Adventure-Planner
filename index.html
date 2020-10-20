@@ -25,13 +25,17 @@
         <div class="container">
           <div class="columns">
             <div class="column is-12">
-                <img class="logoImage" src="assets/birdBike2.svg" alt="Bird on a Bike Image">
-                <div class="column is-12">
-                  <h1 class="logoText title has-text-centered">Outdoor Adventure Planner <span>&trade;<span></h1>
-                  <h2 class="logoTagLine subtitle is-5 has-text-centered pt-5">Using your browser's GPS, Outdoor Adventure Planner will find bike trails within a 25 miles of your current location.</h2>
-                  <div class="geolocationDiv"></div>
-                  <button class="button button1" onclick="getTrails()">-> Find Trails in Your Area <-</button>
-                </div>
+              <img class="logoImage" src="assets/birdBike2.svg" alt="Bird on a Bike Image">
+              <div class="column is-12">
+                <h1 class="logoText title has-text-centered">Outdoor Adventure Planner <span>&trade;<span></h1>
+                <h2 class="logoTagLine subtitle is-5 has-text-centered pt-5">Using your browser's GPS, Outdoor Adventure
+                  Planner will find bike trails within a 25 miles of your current location.</h2>
+                <div class="geolocationDiv"></div>
+                <button class="button button1" onclick="getTrails()">-> Find Trails in Your Area <-</button> </div> <div
+                    id="myProgress" class="hide subtitle is-6 has-text-centered">
+                    <div class="py-3">Please wait while we search for trails</div>
+                    <div id="myBar"></div>
+              </div>
             </div>
     </section>
   </div>

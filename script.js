@@ -1,9 +1,10 @@
 var results = 10
 var radius = 25
+var progressBar = 0;
 
-//get page IDs
 var frontPageEl = $('#frontPage');
 var trailsPageEl = $('#trailsPage');
+var progressBarEl = $('#myProgress');
 
 
 var trailsListEl = $('.trails-list')
@@ -13,6 +14,7 @@ var trailNameEl = $('.trail-name');
 loadSplashPage()
 
 function loadSplashPage() {
+	frontPageEl.removeClass('hide');
 	frontPageEl.removeClass('hide');
 }
 
@@ -30,8 +32,10 @@ locale = function (callback) {
 			var lat = position.coords.latitude;
 			var lon = position.coords.longitude;
 			callback(lat, lon);
+			progressBarEl.removeClass('hide');
+			loadingBar()
 
-			// getWeather(lat, lon);
+			getWeather(lat, lon);
 		},
 		function (error) {
 			showError(error);
@@ -45,7 +49,7 @@ var getTrails = function () {
 
 	locale(function (lat, lon) {
 
-		setTimeout(function () {loadTrialInfo();}, 2000);
+		setTimeout(function () {loadTrialInfo();}, 3000);
 
 		var trailUrl = "https://trailapi-trailapi.p.rapidapi.com/trails/explore/?page=3&per_page= " + results + "&radius=" + radius + "&lat=" + lat + "&lon=" + lon
 
@@ -149,16 +153,37 @@ function getWeather(lat, lon) {
 		//Log the queryURL
 		console.log("queryURL:", queryURL);
 
-		var weatherInfo = $("#weatherInfo");
-		weatherInfo.append(weather);
-		var uvi = $("<li>").text(response.current.uvi);
-		weatherInfo.append(uvi);
+		// var weatherInfo = $("#weatherInfo");
+		// weatherInfo.append(weather);
+		// var uvi = $("<li>").text(response.current.uvi);
+		// weatherInfo.append(uvi);
 
-		$("#weather").text("today's weather: " + response.current.weather[0].main);
-		$("#uvi").html("Today's UVI:" + response.current.uvi);
-		$("#temp").text("today's temperature in kelvin: " + response.current.temp);
-		$("#humidity").text("today's humdity percentage: " + response.current.humidity);
+		$("#weather").text(response.current.weather[0].main);
+		$("#uvi").text("UVI: " + response.current.uvi);
+		$("#temp").text("Today's temperature in kelvin: " + response.current.temp);
+		$("#humidity").text("Humidity: " + response.current.humidity + "%");
 		// log the resulting object
 		console.log("weather response:", response);
 	});
+}
+
+
+
+
+function loadingBar() {
+  if (progressBar == 0) {
+    progressBar = 1;
+    var elem = document.getElementById("myBar");
+    var width = 1;
+    var id = setInterval(frame, 30);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+        progressBar = 0;
+      } else {
+        width++;
+        elem.style.width = width + "%";
+      }
+    }
+  }
 }
