@@ -129,6 +129,8 @@
   width: 1%;
   height: 30px;
   background-color: #a8e52e;
+}
+
 .weatherBtn {
   font-family: 'Ubuntu', sans-serif;
   font-size: 20px;
@@ -143,4 +145,8 @@
   transition-duration: 0.4s;
   /* cursor: pointer; */
   pointer-events: none;
+}
+
+#weatherInfo {
+  margin-left: 30px;
 }
