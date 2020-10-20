@@ -127,12 +127,14 @@ var trailInfo = function (trailID) {
 					$(".image-div").height(300).width(300);
 					$(".image-div").addClass('pt-3')
 					$(".image-div").addClass('show')
+					$(".image-div").addClass('round')
 				} else {
-					var imgUrl = "./assets/default.png"
+					var imgUrl = "./assets/image_PlaceHolder.png"
 					$(".image-div").attr('src', imgUrl)
 					$(".image-div").height(300).width(300);
 					$(".image-div").addClass('pt-3')
 					$(".image-div").addClass('show')
+					$(".image-div").addClass('round')
 				}
 			});
 		});
