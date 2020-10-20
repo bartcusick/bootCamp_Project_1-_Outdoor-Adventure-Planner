@@ -24,6 +24,7 @@ loadSplashPage()
 function loadSplashPage() {
 	frontPageEl.removeClass('hide');
 	footerEl.removeClass('hide');
+	$("#modal-pic").removeClass("is-active");
 }
 
 function loadTrialInfo() {
@@ -66,7 +67,7 @@ locale = function (callback) {
 			getWeather(lat, lon);
 		} else {
 			//add alert modal if a city and state have not been entered
-			$(".modal").addClass("is-active"); 
+			$("#modal-geocode").addClass("is-active"); 
 		}
 	});
 
@@ -186,12 +187,31 @@ var trailInfo = function (trailID) {
 				} else {
 					$(".length").html("<br><span class=has-text-weight-bold>Trail Length:</span> <i>not available</i> ");
 				}
-
+				
+				var roundRating = (Math.round(data.rating * 2) / 2).toFixed(1);
+				console.log("original roundRating:", roundRating);
 				//check to see if rating is null
-				if (data.rating != 0) {
-					$(".rating").html("<br><span class=has-text-weight-bold>Rating:</span>  " + data.rating);
+				if (roundRating != 0) {
+				  console.log("if statement roundRating:", roundRating);
+				  $(function () {
+					function addScore(roundRating, $domElement) {
+					  $(".rating").html(
+						"<br><span class=has-text-weight-bold>Rating: </span>"
+					  );
+					  starRating = roundRating * 20;
+					  console.log("starRating:", starRating);
+					  $("<span class='stars-container'>")
+						.addClass("stars-" + starRating.toString())
+						.text("★★★★★")
+						.appendTo($domElement);
+					}
+					console.log("in function roundRating:", roundRating);
+					addScore(roundRating, $(".rating"));
+				  });
 				} else {
-					$(".rating").html("<br><span class=has-text-weight-bold>Rating:</span> <i>not available</i><br>");
+				  $(".rating").html(
+					"<br><span class=has-text-weight-bold>Rating:</span> <i>not available</i><br>"
+				  );
 				}
 
 				//more info URL
@@ -212,7 +232,7 @@ var trailInfo = function (trailID) {
 					$(".image-div").addClass('show')
 					$(".image-div").addClass('round')
 				}
-			});
+			});			
 		});
 }
 
@@ -266,16 +286,16 @@ function loadingBar() {
 
 // Modal Functions
 $(".modal-close").click(function() {
-	$(".modal").removeClass("is-active");
+	$(".modal-geocode").removeClass("is-active");
 	location.reload();
  });
  
  $("#closebtn").click(function() {
-	$(".modal").removeClass("is-active");
+	$(".modal-geocode").removeClass("is-active");
 	location.reload();
  });
 
  $("#accept").click(function () {
-   $(".modal").removeClass("is-active");
+   $(".modal-geocode").removeClass("is-active");
 	location.reload();
 	   });
