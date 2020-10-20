@@ -47,6 +47,7 @@
 }
 .button1:hover {background: #ffab1a;}
   /* .button2:hover { background: linear-gradient(90deg,#a8e52e,#ecf004;} */
+  
   .trailList {
     font-family: 'Ubuntu', sans-serif;
     font-size: 20px;
@@ -54,7 +55,6 @@
     background: #73AD21;
     background: linear-gradient(90deg,#ecf004,#a8e52e);
     padding: 10px; 
-    width: 420px;
     height: 50px;  
   }
   .trail-name {
@@ -63,6 +63,7 @@
     border-radius: 20px 20px 0px 0px;
     background: #73AD21;
     background: linear-gradient(90deg,#ecf004,#a8e52e);
+    height: 50px;
     padding: 10px; 
   }
   .info {
@@ -85,7 +86,6 @@
     /* font-family: 'Merriweather', serif; */
     font-family: 'Vollkorn', serif;
     font-size: 20px;
-    /* padding: 10px; */
     margin-left: 30px;
   }
 
@@ -97,13 +97,13 @@
 
 
 .fa-info-circle:hover {
-  color: blue;
+  color:rgb(20, 181, 20);
 }
 
 
 
 .info:hover {
-  color:blue;
+  color:rgb(20, 181, 20);
 }
 
 .good{
@@ -131,22 +131,67 @@
   background-color: #a8e52e;
 }
 
-.weatherBtn {
-  font-family: 'Ubuntu', sans-serif;
+.weatherBar {
+  font-family: 'Vollkorn', sans-serif;
   font-size: 20px;
   text-align: center;
-  text-size-adjust: inherit;
-  background: linear-gradient(90deg,#ecf004,#a8e52e);
-  border-radius: 10px;
+  background-color:transparent;
+  /* background-color: #B7E2F7; */
+  border-radius:  10px 10px 0px 0px;
   padding: 10px;
-  text-decoration: none;
-  /* display: block; */
-  margin: auto;
-  transition-duration: 0.4s;
-  /* cursor: pointer; */
-  pointer-events: none;
+  border-style:none;
+}
+
+.weatherBtn1 {
+  font-family: 'Vollkorn', sans-serif;
+  font-weight: bold;
+  background-color: #95eff5;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  border-radius:  10px 0px 0px 0px;
+  border-style:none;
+}
+.weatherBtn2 {
+  font-family: 'Vollkorn', sans-serif;
+  font-weight: bold;
+  background-color: #eff595;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  border-radius:  0px 0px 0px 0px;
+  border-style:none;
+}
+.weatherBtn3 {
+  font-family: 'Vollkorn', sans-serif;
+  font-weight: bold;
+  background-color: #f5d295;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  border-radius:  0px 0px 0px 0px;
+  border-style:none;
+}
+.weatherBtn4 {
+  font-family: 'Vollkorn', sans-serif;
+  font-weight: bold;
+  background-color: #f5ab95;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  border-radius:  0px 10px 0px 0px;
+  border-style:none;
+}
+
+
+.round {
+  border-radius:  10px 10px 10px 10px;
 }
 
 #weatherInfo {
   margin-left: 30px;
+}
+#description {
+  padding: 10px;
+  /* margin-top: 30px; */
 }
