@@ -1,5 +1,7 @@
 # Outdoor Adventure Planner
 ## Presented by A-TEAM
+link to completed app.
+https://bartcusick.github.io/bootCamp_Project_1-_Outdoor-Adventure-Planner 
 
 ### Oct 8th 2020 - Oct 20 2020
 ## Developers:
@@ -37,3 +39,4 @@ Use this [project presentation template](https://docs.google.com/presentation/d/
 You are required to submit the following:
 * The URL of the deployed application: https://bartcusick.github.io/bootCamp_Project_1-_Outdoor-Adventure-Planner/
 * The URL of the GitHub repository: git@github.com:bartcusick/bootCamp_Project_1-_Outdoor-Adventure-Planner.git
+* The URL of the deployed application slideshow: https://docs.google.com/presentation/d/1pnzV9ny1YAKxVvpf5VYmB_tIlXrIp6dqCWOAdQgwGBQ/edit?usp=sharing

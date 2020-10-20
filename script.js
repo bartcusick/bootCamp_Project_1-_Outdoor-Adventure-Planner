@@ -1,4 +1,4 @@
-var results = 10
+var results = 7
 var radius = 25
 var progressBar = 0;
 
@@ -6,11 +6,13 @@ var frontPageEl = $('#frontPage');
 var trailsPageEl = $('#trailsPage');
 var progressBarEl = $('#myProgress');
 
+var placeholder = $('.placeholder')
 
 var trailsListEl = $('.trails-list')
 var imageDivEl = $('.image-div');
 var trailNameEl = $('.trail-name');
 var weatherEl = $('#weatherInfo')
+
 
 loadSplashPage()
 
@@ -27,36 +29,92 @@ function loadTrialInfo() {
 }
 
 
+
 locale = function (callback) {
-	navigator.geolocation.getCurrentPosition(
-		function (position) {
-			var lat = position.coords.latitude;
-			var lon = position.coords.longitude;
+
+	var map = new google.maps.Map(document.getElementById("map"), {
+		zoom: 11,
+		center: {
+			lat: 35.787743,
+			lng: -78.644257
+		},
+	});
+	var geocoder = new google.maps.Geocoder();
+	var address = document.getElementById("address").value;
+
+	geocoder.geocode({
+		address: address
+	}, (results, status) => {
+		if (status === "OK") {
+		
+			var lat = results[0].geometry.location.lat()
+			var lon = results[0].geometry.location.lng()
+			var address = results[0].formatted_address.slice(0,-5)
+
+			// add city and state to progress bar
+			var trailName = $('<div>').text('Please wait while we search for trails in ' + address).addClass('py-3');;
+			progressBarEl.append(trailName);
+
 			callback(lat, lon);
 			progressBarEl.removeClass('hide');
 			loadingBar()
-
 			getWeather(lat, lon);
-		},
-		function (error) {
-			showError(error);
-			callback();		
-		
+		} else {
+			
+			alert("Geocode was not successful for the following reason: " + status);
 		}
-	);
-};
+	});
+
+}
+
+
+function initMap() {
+	var map = new google.maps.Map(document.getElementById("map"), {
+		zoom: 11,
+		center: {
+			lat: 35.787743,
+			lng: -78.644257
+		},
+	});
+	var geocoder = new google.maps.Geocoder();
+	document.getElementById("submit").addEventListener("click", () => {
+		geocodeAddress(geocoder, map);
+		getTrails()		
+	}, {once : true});
+	
+}
+
+function geocodeAddress(geocoder, resultsMap) {
+
+	var address = document.getElementById("address").value;
+
+	geocoder.geocode({
+		address: address
+	}, (results, status) => {
+		if (status === "OK") {
+			resultsMap.setCenter(results[0].geometry.location);
+			new google.maps.Marker({
+				map: resultsMap,
+				position: results[0].geometry.location,
+
+			});
+		} else {
+			alert("Geocode was not successful for the following reason: " + status);
+		}
+	});
+}
 
 var getTrails = function () {
 
 	locale(function (lat, lon) {
 
-		setTimeout(function () {loadTrialInfo();}, 3000);
+		setTimeout(function () {loadTrialInfo();}, 4000);
 
-		var trailUrl = "https://trailapi-trailapi.p.rapidapi.com/trails/explore/?page=3&per_page= " + results + "&radius=" + radius + "&lat=" + lat + "&lon=" + lon
+		var trailUrl = "https://trailapi-trailapi.p.rapidapi.com/trails/explore/?&per_page= " + results + "&radius=" + radius + "&lat=" + lat + "&lon=" + lon
 
 		$.ajax({
 				url: trailUrl,
-				headers: {
+				headers: { 
 					'x-rapidapi-host': 'trailapi-trailapi.p.rapidapi.com',
 					'x-rapidapi-key': 'aa1f2dda11msh22ea2d650da7d5fp193f76jsn94dfb4977b89',
 				},
@@ -73,6 +131,8 @@ var getTrails = function () {
 					$(".trailsListEl").text(data.name)
 				});
 
+				$(".placeholder").html("<div class=has-text-centered id=location>Select Trail to View Info</div><img src='./assets/birdBikeMap.png' alt='Bird with Map'> ");
+	
 				$('.info').click(function () {
 					var trailID = $(this).attr('trail-id');
 					trailInfo(trailID)
@@ -97,9 +157,18 @@ var trailInfo = function (trailID) {
 		.then(function (response) {
 			var results = response.data;
 
+		
 
 			results.forEach((data) => {
+				placeholder.addClass('hide')
 				trailNameEl.removeClass('hide')
+
+				$(".weatherBtn1").removeClass('hide')
+				$(".weatherBtn2").removeClass('hide')
+				$(".weatherBtn3").removeClass('hide')
+				$(".weatherBtn4").removeClass('hide')
+
+
 				$(".trail-name").text(data.name)
 				$(".trail-name").addClass('title is-4')
 				$(".description").html("<span class=has-text-weight-bold>Trail Description:</span>  " + data.description)
@@ -123,16 +192,20 @@ var trailInfo = function (trailID) {
 				//check to see if thumbnail is null
 				if (data.thumbnail != null) {
 
+					
+
 					$(".image-div").attr('src', data.thumbnail)
 					$(".image-div").height(300).width(300);
 					$(".image-div").addClass('pt-3')
 					$(".image-div").addClass('show')
+					$(".image-div").addClass('round')
 				} else {
-					var imgUrl = "./assets/default.png"
+					var imgUrl = "./assets/image_PlaceHolder.png"
 					$(".image-div").attr('src', imgUrl)
 					$(".image-div").height(300).width(300);
 					$(".image-div").addClass('pt-3')
 					$(".image-div").addClass('show')
+					$(".image-div").addClass('round')
 				}
 			});
 		});
@@ -160,13 +233,7 @@ function getWeather(lat, lon) {
 		var weatherAltTag = response.current.weather[0].main;
 
 		console.log('iconURL:', iconURL)
-		// apply unique weather alt tag
-		// $('#weather').attr('alt', weatherAltTag);
-		// console.log('weatherAltTag:', weatherAltTag)
-		// // insert weather icon source url
-		// $('#weather').attr('src', iconURL);
 
-{/* <img id="weatherIcon" src="" alt="" height=50px widht=50px> */}
 		
 		$("#weather").html('<img id = weatherIcon" src=' + iconURL + ' alt="' + weatherAltTag + '" height=20px width=20px>' );
 		// $("#weather").html(response.current.weather[0].main );
@@ -183,7 +250,7 @@ function loadingBar() {
     progressBar = 1;
     var elem = document.getElementById("myBar");
     var width = 1;
-    var id = setInterval(frame, 30);
+    var id = setInterval(frame, 40);
     function frame() {
       if (width >= 100) {
         clearInterval(id);
