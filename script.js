@@ -158,10 +158,10 @@ function getWeather(lat, lon) {
 		// var uvi = $("<li>").text(response.current.uvi);
 		// weatherInfo.append(uvi);
 
-		$("#weather").text(response.current.weather[0].main);
-		$("#uvi").text("UVI: " + response.current.uvi);
-		$("#temp").text("Today's temperature in kelvin: " + response.current.temp);
-		$("#humidity").text("Humidity: " + response.current.humidity + "%");
+		$("#weather").html(response.current.weather[0].main);
+		$("#uvi").html("UVI: " + response.current.uvi);
+		$("#temp").html("Today's temperature in kelvin: " + response.current.temp);
+		$("#humidity").html("Humidity: " + response.current.humidity + "%");
 		// log the resulting object
 		console.log("weather response:", response);
 	});
