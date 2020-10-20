@@ -150,3 +150,9 @@
 #weatherInfo {
   margin-left: 30px;
 }
+
+.image-div {
+  float: left;
+  margin: 20px 5 0 0;
+  /* border: 1px solid black; */
+}
