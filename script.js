@@ -14,11 +14,16 @@ var trailNameEl = $('.trail-name');
 var weatherEl = $('#weatherInfo')
 
 
+var footerEl = $('.footer')
+
+// Weather Variables
+var APIKey = "304328a5715add3e4e98ab718222d70d";
+
 loadSplashPage()
 
 function loadSplashPage() {
 	frontPageEl.removeClass('hide');
-	frontPageEl.removeClass('hide');
+	footerEl.removeClass('hide');
 }
 
 function loadTrialInfo() {
@@ -60,8 +65,8 @@ locale = function (callback) {
 			loadingBar()
 			getWeather(lat, lon);
 		} else {
-			
-			alert("Geocode was not successful for the following reason: " + status);
+			//add alert modal if a city and state have not been entered
+			$(".modal").addClass("is-active"); 
 		}
 	});
 
@@ -99,7 +104,6 @@ function geocodeAddress(geocoder, resultsMap) {
 
 			});
 		} else {
-			alert("Geocode was not successful for the following reason: " + status);
 		}
 	});
 }
@@ -126,13 +130,16 @@ var getTrails = function () {
 
 				results.forEach((data) => {
 
+					//get list of trails
 					var trailName = $('<div>').text(data.name).attr('trail-id', data.id).addClass('info');
 					trailsListEl.append(trailName);
 					$(".trailsListEl").text(data.name)
 				});
 
+				//add placeholder image
 				$(".placeholder").html("<div class=has-text-centered id=location>Select Trail to View Info</div><img src='./assets/birdBikeMap.png' alt='Bird with Map'> ");
 	
+				//show trail info on click
 				$('.info').click(function () {
 					var trailID = $(this).attr('trail-id');
 					trailInfo(trailID)
@@ -157,12 +164,12 @@ var trailInfo = function (trailID) {
 		.then(function (response) {
 			var results = response.data;
 
-		
-
 			results.forEach((data) => {
+				//show placeholder image and trailElement
 				placeholder.addClass('hide')
 				trailNameEl.removeClass('hide')
 
+				//show weather buttons
 				$(".weatherBtn1").removeClass('hide')
 				$(".weatherBtn2").removeClass('hide')
 				$(".weatherBtn3").removeClass('hide')
@@ -187,13 +194,11 @@ var trailInfo = function (trailID) {
 					$(".rating").html("<br><span class=has-text-weight-bold>Rating:</span> <i>not available</i><br>");
 				}
 
+				//more info URL
 				$(".more-info").html("<br><span class=has-text-weight-bold>Detailed Info:</span> <a href='" + data.url + "' target=_blank>Click to find out more about this trail.</a>")
 
 				//check to see if thumbnail is null
 				if (data.thumbnail != null) {
-
-					
-
 					$(".image-div").attr('src', data.thumbnail)
 					$(".image-div").height(300).width(300);
 					$(".image-div").addClass('pt-3')
@@ -211,11 +216,8 @@ var trailInfo = function (trailID) {
 		});
 }
 
-// Weather Variables
-var APIKey = "304328a5715add3e4e98ab718222d70d";
 
 // Weather api call
-
 function getWeather(lat, lon) {
 	var queryURL =
 		"https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&exclude=" + // { part } +
@@ -225,7 +227,6 @@ function getWeather(lat, lon) {
 		url: queryURL,
 		method: "GET",
 	}).then(function (response) {
-		//Log the queryURL
 		console.log("queryURL:", queryURL);
 		var iconID = response.current.weather[0].id;
 		var iconCode = response.current.weather[0].icon;
@@ -236,15 +237,15 @@ function getWeather(lat, lon) {
 
 		
 		$("#weather").html('<img id = weatherIcon" src=' + iconURL + ' alt="' + weatherAltTag + '" height=20px width=20px>' );
-		// $("#weather").html(response.current.weather[0].main );
 
 		$("#uvi").html("UVI: " + response.current.uvi);
 		$("#temp").html(response.current.temp + "°");
 		$("#humidity").html("Humidity: " + response.current.humidity + "%");
-		// log the resulting object
-		console.log("weather response:", response);
 	});
 }
+
+
+// Progress bar load
 function loadingBar() {
   if (progressBar == 0) {
     progressBar = 1;
@@ -262,3 +263,19 @@ function loadingBar() {
     }
   }
 }
+
+// Modal Functions
+$(".modal-close").click(function() {
+	$(".modal").removeClass("is-active");
+	location.reload();
+ });
+ 
+ $("#closebtn").click(function() {
+	$(".modal").removeClass("is-active");
+	location.reload();
+ });
+
+ $("#accept").click(function () {
+   $(".modal").removeClass("is-active");
+	location.reload();
+	   });
