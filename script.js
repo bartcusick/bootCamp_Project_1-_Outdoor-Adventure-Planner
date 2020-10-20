@@ -10,6 +10,7 @@ var progressBarEl = $('#myProgress');
 var trailsListEl = $('.trails-list')
 var imageDivEl = $('.image-div');
 var trailNameEl = $('.trail-name');
+var weatherEl = $('#weatherInfo')
 
 loadSplashPage()
 
@@ -75,6 +76,7 @@ var getTrails = function () {
 				$('.info').click(function () {
 					var trailID = $(this).attr('trail-id');
 					trailInfo(trailID)
+					weatherEl.removeClass('hide');
 				})
 			});
 	});
@@ -143,7 +145,7 @@ var APIKey = "304328a5715add3e4e98ab718222d70d";
 
 function getWeather(lat, lon) {
 	var queryURL =
-		"https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=" + // { part } +
+		"https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&exclude=" + // { part } +
 		"&appid=" +
 		APIKey;
 	$.ajax({
@@ -152,24 +154,30 @@ function getWeather(lat, lon) {
 	}).then(function (response) {
 		//Log the queryURL
 		console.log("queryURL:", queryURL);
+		var iconID = response.current.weather[0].id;
+		var iconCode = response.current.weather[0].icon;
+		var iconURL= 'http://openweathermap.org/img/w/' + iconCode + '.png';
+		var weatherAltTag = response.current.weather[0].main;
 
-		// var weatherInfo = $("#weatherInfo");
-		// weatherInfo.append(weather);
-		// var uvi = $("<li>").text(response.current.uvi);
-		// weatherInfo.append(uvi);
+		console.log('iconURL:', iconURL)
+		// apply unique weather alt tag
+		// $('#weather').attr('alt', weatherAltTag);
+		// console.log('weatherAltTag:', weatherAltTag)
+		// // insert weather icon source url
+		// $('#weather').attr('src', iconURL);
 
-		$("#weather").html(response.current.weather[0].main);
+{/* <img id="weatherIcon" src="" alt="" height=50px widht=50px> */}
+		
+		$("#weather").html('<img id = weatherIcon" src=' + iconURL + ' alt="' + weatherAltTag + '" height=20px width=20px>' );
+		// $("#weather").html(response.current.weather[0].main );
+
 		$("#uvi").html("UVI: " + response.current.uvi);
-		$("#temp").html("Today's temperature in kelvin: " + response.current.temp);
+		$("#temp").html(response.current.temp + "°");
 		$("#humidity").html("Humidity: " + response.current.humidity + "%");
 		// log the resulting object
 		console.log("weather response:", response);
 	});
 }
-
-
-
-
 function loadingBar() {
   if (progressBar == 0) {
     progressBar = 1;
