@@ -1,20 +1,47 @@
-var results = 8
+var results = 10
 var radius = 25
-var trailsListEl = $('.trails-list');
-var columns = 0;
+var progressBar = 0;
+
+var frontPageEl = $('#frontPage');
+var trailsPageEl = $('#trailsPage');
+var progressBarEl = $('#myProgress');
 
 
-var locale = function (callback) {
+var trailsListEl = $('.trails-list')
+var imageDivEl = $('.image-div');
+var trailNameEl = $('.trail-name');
+var weatherEl = $('#weatherInfo')
+
+loadSplashPage()
+
+function loadSplashPage() {
+	frontPageEl.removeClass('hide');
+	frontPageEl.removeClass('hide');
+}
+
+function loadTrialInfo() {
+	frontPageEl.addClass('hide');
+	trailsPageEl.removeClass('hide');
+	imageDivEl.addClass('hide')
+	trailNameEl.addClass('hide')
+}
+
+
+locale = function (callback) {
 	navigator.geolocation.getCurrentPosition(
 		function (position) {
 			var lat = position.coords.latitude;
 			var lon = position.coords.longitude;
 			callback(lat, lon);
-			// getWeather(lat, lon);
+			progressBarEl.removeClass('hide');
+			loadingBar()
+
+			getWeather(lat, lon);
 		},
 		function (error) {
 			showError(error);
-			callback();
+			callback();		
+		
 		}
 	);
 };
@@ -22,6 +49,9 @@ var locale = function (callback) {
 var getTrails = function () {
 
 	locale(function (lat, lon) {
+
+		setTimeout(function () {loadTrialInfo();}, 3000);
+
 		var trailUrl = "https://trailapi-trailapi.p.rapidapi.com/trails/explore/?page=3&per_page= " + results + "&radius=" + radius + "&lat=" + lat + "&lon=" + lon
 
 		$.ajax({
@@ -44,9 +74,9 @@ var getTrails = function () {
 				});
 
 				$('.info').click(function () {
-					$(".trail-info").empty();
 					var trailID = $(this).attr('trail-id');
 					trailInfo(trailID)
+					weatherEl.removeClass('hide');
 				})
 			});
 	});
@@ -69,6 +99,7 @@ var trailInfo = function (trailID) {
 
 
 			results.forEach((data) => {
+				trailNameEl.removeClass('hide')
 				$(".trail-name").text(data.name)
 				$(".trail-name").addClass('title is-4')
 				$(".description").html("<span class=has-text-weight-bold>Trail Description:</span>  " + data.description)
@@ -95,11 +126,13 @@ var trailInfo = function (trailID) {
 					$(".image-div").attr('src', data.thumbnail)
 					$(".image-div").height(300).width(300);
 					$(".image-div").addClass('pt-3')
+					$(".image-div").addClass('show')
 				} else {
 					var imgUrl = "./assets/default.png"
 					$(".image-div").attr('src', imgUrl)
 					$(".image-div").height(300).width(300);
 					$(".image-div").addClass('pt-3')
+					$(".image-div").addClass('show')
 				}
 			});
 		});
@@ -112,7 +145,7 @@ var APIKey = "304328a5715add3e4e98ab718222d70d";
 
 function getWeather(lat, lon) {
 	var queryURL =
-		"https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=" + // { part } +
+		"https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&exclude=" + // { part } +
 		"&appid=" +
 		APIKey;
 	$.ajax({
@@ -121,17 +154,44 @@ function getWeather(lat, lon) {
 	}).then(function (response) {
 		//Log the queryURL
 		console.log("queryURL:", queryURL);
+		var iconID = response.current.weather[0].id;
+		var iconCode = response.current.weather[0].icon;
+		var iconURL= 'http://openweathermap.org/img/w/' + iconCode + '.png';
+		var weatherAltTag = response.current.weather[0].main;
 
-		var weatherInfo = $("#weatherInfo");
-		weatherInfo.append(weather);
-		var uvi = $("<li>").text(response.current.uvi);
-		weatherInfo.append(uvi);
+		console.log('iconURL:', iconURL)
+		// apply unique weather alt tag
+		// $('#weather').attr('alt', weatherAltTag);
+		// console.log('weatherAltTag:', weatherAltTag)
+		// // insert weather icon source url
+		// $('#weather').attr('src', iconURL);
 
-		$("#weather").text("today's weather: " + response.current.weather[0].main);
-		$("#uvi").html("Today's UVI:" + response.current.uvi);
-		$("#temp").text("today's temperature in kelvin: " + response.current.temp);
-		$("#humidity").text("today's humdity percentage: " + response.current.humidity);
+{/* <img id="weatherIcon" src="" alt="" height=50px widht=50px> */}
+		
+		$("#weather").html('<img id = weatherIcon" src=' + iconURL + ' alt="' + weatherAltTag + '" height=20px width=20px>' );
+		// $("#weather").html(response.current.weather[0].main );
+
+		$("#uvi").html("UVI: " + response.current.uvi);
+		$("#temp").html(response.current.temp + "°");
+		$("#humidity").html("Humidity: " + response.current.humidity + "%");
 		// log the resulting object
 		console.log("weather response:", response);
 	});
+}
+function loadingBar() {
+  if (progressBar == 0) {
+    progressBar = 1;
+    var elem = document.getElementById("myBar");
+    var width = 1;
+    var id = setInterval(frame, 30);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+        progressBar = 0;
+      } else {
+        width++;
+        elem.style.width = width + "%";
+      }
+    }
+  }
 }

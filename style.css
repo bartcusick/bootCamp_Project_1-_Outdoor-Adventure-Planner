@@ -4,43 +4,31 @@
 
 /* Styles For The Front Page */
 
-.logoImage {
-   width: auto;
-   padding: 0px;
-   height: auto;
-   margin: auto;
-   /* max-width: 70%; */
-   max-height: 440px;
-   /* display: block; */
+ .logoImage {
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 350px;
+} 
+
+/* set image to smaller for landscape screens */
+@media screen and (max-width: 992px) {
+  .logoImage {
+    max-width: 200px;
+  }
 }
+
 .logoText {
-  /* font-family: 'Vollkorn', serif; */
    font-family: 'Ubuntu', sans-serif;
-   font-size: 35px; 
-   text-align: center;                 
-   width: 50%;
-   padding: 0px;
-   height: auto;
-   margin: auto;
-   /* max-width: 70%; */
-   max-height: 440px;
-   /* display: block; */
-   /* margin-left: auto;
-   margin-right: auto; */
 }
+
 .logoTagLine {
   font-family: 'Vollkorn', serif;
-  font-size: 20px;
-  text-align: center;
-  margin: auto;
-  width: 50%;
-  padding: 10px;
-  height: auto;
-  /* max-width: 70%; */
-  max-height: 440px;
-  /* display: block; */
-  /* margin-left: auto;
-  margin-right: auto; */ 
+}
+
+#navbar-brand{
+  margin-left: 20px;
 }
 
 .button {
@@ -59,7 +47,47 @@
 }
 .button1:hover {background: #ffab1a;}
   /* .button2:hover { background: linear-gradient(90deg,#a8e52e,#ecf004;} */
+  .trailList {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    border-radius: 20px 20px 0px 0px;
+    background: #73AD21;
+    background: linear-gradient(90deg,#ecf004,#a8e52e);
+    padding: 10px; 
+    width: 420px;
+    height: 50px;  
+  }
+  .trail-name {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    border-radius: 20px 20px 0px 0px;
+    background: #73AD21;
+    background: linear-gradient(90deg,#ecf004,#a8e52e);
+    padding: 10px; 
+  }
+  .info {
+    font-family: 'Vollkorn', serif;
+    font-size: 20px;
+    margin-left: 20px;
+    padding: 10px; 
+  }
 
+
+  #trail-id {
+    font-family: 'Vollkorn', serif;
+    font-size: 16px; 
+  }
+  #ubuntu{
+    font-family: 'Ubuntu', sans-serif;
+    padding: 10px; 
+  }
+  #myFont{
+    /* font-family: 'Merriweather', serif; */
+    font-family: 'Vollkorn', serif;
+    font-size: 20px;
+    /* padding: 10px; */
+    margin-left: 30px;
+  }
 
 
 /* remove line breaks from descriptions */
@@ -80,4 +108,45 @@
 
 .good{
   color: green;
+}
+
+
+.hide{
+  display: none;
+}
+
+.show{
+  display: block;
+}
+
+
+#myProgress {
+  width: 100%;
+  background-color: whitesmoke;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #a8e52e;
+}
+
+.weatherBtn {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  text-size-adjust: inherit;
+  background: linear-gradient(90deg,#ecf004,#a8e52e);
+  border-radius: 10px;
+  padding: 10px;
+  text-decoration: none;
+  /* display: block; */
+  margin: auto;
+  transition-duration: 0.4s;
+  /* cursor: pointer; */
+  pointer-events: none;
+}
+
+#weatherInfo {
+  margin-left: 30px;
 }
